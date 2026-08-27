@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="180" height="120" viewBox="0 0 180 120">
+  <g fill="#0F1753" font-family="IBM Plex Mono, ui-monospace, monospace" font-size="17" letter-spacing="2">
+    <text x="0"  y="22">01 01 01</text>
+    <text x="26" y="52">01 01 0</text>
+    <text x="-8" y="82">1 01 01 0</text>
+    <text x="18" y="112">01 01 01</text>
+  </g>
+</svg>
