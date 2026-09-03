@@ -79,6 +79,36 @@ def rail_controls(what, cls=""):
     )
 
 
+APPLY_OPEN = D.INUKA.get("applications_open", True)
+
+
+def apply_btn(cls="btn--amber", dark=False):
+    """The INUKA application CTA.
+
+    Once D.INUKA["applications_open"] is False this stops being a link and
+    becomes an inert label, so nothing on the site points at a form that is no
+    longer taking entries. Pass dark=True on a dark surface."""
+    if APPLY_OPEN:
+        return ('<a class="btn %s" href="%s" target="_blank" rel="noopener">Apply now %s</a>'
+                % (cls, D.LINKS["inuka_apply"], ARW))
+    return ('<span class="btn btn--closed%s">Applications closed</span>'
+            % (" btn--closed-on-dark" if dark else ""))
+
+
+def deadline_line():
+    if APPLY_OPEN:
+        return "Applications close %s" % D.INUKA["close"]
+    return "Applications closed &#183; %s" % D.INUKA["close"]
+
+
+def deadline_note():
+    if APPLY_OPEN:
+        return ("Free to attend &#183; Lunch provided &#183; Women are strongly "
+                "encouraged to apply")
+    return ("Free to attend &#183; Lunch provided &#183; 60 places, half of them "
+            "reserved for women")
+
+
 def announce():
     return (
         '<div class="announce"><div class="shell--wide"><div class="announce__in">'
@@ -497,7 +527,7 @@ def home():
         </ul>
         <div class="btn-row" data-reveal style="margin-top:2rem">
           <a class="btn btn--amber" href="inuka-mombasa.html">Learn more {arw}</a>
-          <a class="btn btn--on-dark" href="{apply}" target="_blank" rel="noopener">Apply now {arw}</a>
+          {inuka_cta}
         </div>
       </div>
       <div class="split__media" data-reveal><div class="framed">{inuka_img}</div>
@@ -661,7 +691,7 @@ def home():
                      "A CSA Africa t-shirt printed with the words: Empowering young Africans with computing skills",
                      cls="hero__poster", eager=True, sizes="100vw"),
         org=D.ORG, arw=ARW,
-        swahilipot=D.LINKS["swahilipot"], apply=D.LINKS["inuka_apply"],
+        swahilipot=D.LINKS["swahilipot"], inuka_cta=apply_btn("btn--on-dark", dark=True),
         dates=D.INUKA["dates"], venue=esc(D.INUKA["venue"]), spots=esc(D.INUKA["spots"]),
         inuka_img=img("story/session", "A CSA Africa session in progress at the 2025 workshop"),
         sofiat=D.LINKS["sofiat_gla"],
@@ -1060,7 +1090,7 @@ def inuka():
       <span>{dates}</span><span>{venue}</span><span>{spots}</span>
     </div>
     <div class="btn-row" style="margin-top:2rem">
-      <a class="btn btn--amber" href="{apply}" target="_blank" rel="noopener">Apply now {arw}</a>
+      {inuka_cta}
     </div>
   </div>
 </section>
@@ -1068,9 +1098,8 @@ def inuka():
 <section class="band-dark" style="padding-block:1.5rem">
   <div class="shell--wide" style="display:flex;flex-wrap:wrap;gap:.75rem 2rem;align-items:center;justify-content:space-between">
     <p style="margin:0;font-family:var(--mono);font-size:.75rem;letter-spacing:.14em;text-transform:uppercase;color:var(--amber)">
-      Applications close {close}</p>
-    <p style="margin:0;color:var(--on-dark-2);font-size:.9375rem">Free to attend &#183; Lunch provided
-      &#183; Women are strongly encouraged to apply</p>
+      {close_line}</p>
+    <p style="margin:0;color:var(--on-dark-2);font-size:.9375rem">{close_note}</p>
   </div>
 </section>
 
@@ -1126,11 +1155,11 @@ def inuka():
   <div class="shell--wide">
     <div class="split split--wide-text split--top">
       <div>
-        <p class="eyebrow" data-reveal>Why you shouldn&#8217;t wait</p>
+        <p class="eyebrow" data-reveal>{wait_eyebrow}</p>
         <h2 class="h2" data-reveal style="max-width:16ch">60 places. Half reserved for women.</h2>
         <ul class="hl-list" data-reveal style="margin-top:2rem">{wait}</ul>
         <div class="btn-row" data-reveal style="margin-top:2.5rem">
-          <a class="btn btn--amber" href="{apply}" target="_blank" rel="noopener">Apply now {arw}</a>
+          {inuka_cta_light}
           <a class="btn btn--ghost" href="{swahilipot}" target="_blank" rel="noopener">Swahilipot Hub {arw}</a>
         </div>
       </div>
@@ -1143,8 +1172,11 @@ def inuka():
 """.format(
         hero=img("story/inuka-hero", "CSA Africa participants celebrating together", eager=True, sizes="100vw"),
         partners=esc(I["partners"]), tagline=esc(I["tagline"]), dates=I["dates"],
-        venue=esc(I["venue"]), spots=esc(I["spots"]), close=I["close"],
-        apply=D.LINKS["inuka_apply"], arw=ARW,
+        venue=esc(I["venue"]), spots=esc(I["spots"]),
+        close_line=deadline_line(), close_note=deadline_note(),
+        wait_eyebrow="Why you shouldn&#8217;t wait" if APPLY_OPEN else "Places and selection",
+        inuka_cta=apply_btn("btn--amber", dark=True),
+        inuka_cta_light=apply_btn("btn--amber"), arw=ARW,
         why=why, beyond=beyond, walk=walk, wait=wait, speakers=speakers,
         note=esc(I["walkaway_note"]), also=esc(I["also"]),
         swahilipot=D.LINKS["swahilipot"],

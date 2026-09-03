@@ -269,6 +269,21 @@ hr { border: 0; border-top: 1px solid var(--line); margin: 0; }
 
 .btn--light { --btn-bg: var(--white); --btn-fg: var(--navy); }
 
+/* the INUKA apply CTA once applications close (build.py apply_btn) — a label,
+   not a control: no link, no hover lift, no arrow. */
+.btn--closed {
+  --btn-bg: rgba(15, 23, 83, 0.06);
+  --btn-fg: var(--slate);
+  border-color: var(--line);
+  cursor: default;
+}
+.btn--closed-on-dark {
+  --btn-bg: rgba(255, 255, 255, 0.07);
+  --btn-fg: #dcdfec;
+  border-color: rgba(255, 255, 255, 0.26);
+}
+.btn--closed:hover { transform: none; }
+
 .btn-row { display: flex; flex-wrap: wrap; gap: 0.85rem; }
 
 /* inline text link with underline reveal */

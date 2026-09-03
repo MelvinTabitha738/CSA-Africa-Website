@@ -387,6 +387,10 @@ INUKA = {
     "venue": "Swahilipot Hub Foundation, Mombasa",
     "dates": "10 - 13 September (4 days)",
     "close": "Friday 28 August 2026",
+    # Flip back to True (and put the copy below into the future tense) when a
+    # new call opens. build.py reads this to decide whether the apply CTA is a
+    # live link or an inert "Applications closed" label.
+    "applications_open": False,
     "spots": "60 spots only",
     "why": [
         "For eight years, CSA Africa has taught young Africans to code. Along the way, we noticed "
@@ -434,9 +438,10 @@ INUKA = {
             "Swahilipot Hub, Mombasa’s own home for youth innovation, alongside its mentors and "
             "community.",
     "wait": [
-        "Spaces are capped at 60 with 50% reserved for women. Applications close Friday 28 August 2026.",
-        "Selection is competitive and includes a short video. The sooner you apply, the more time you "
-        "have to put your best answer forward, not a rushed one the night before the deadline.",
+        "Spaces were capped at 60 with 50% reserved for women. Applications closed on Friday "
+        "28 August 2026.",
+        "Selection was competitive and included a short video. Everyone who applied will hear "
+        "from the CSA Africa team directly.",
         "This programme is completely free to attend.",
         "Lunch is provided.",
         "All we ask is your full presence for four days, no exceptions.",
