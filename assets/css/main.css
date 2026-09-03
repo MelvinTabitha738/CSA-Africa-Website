@@ -500,6 +500,27 @@ hr { border: 0; border-top: 1px solid var(--line); margin: 0; }
   .header-cta .btn { padding-inline: 0.95rem; }
 }
 @media (max-width: 760px) { .header-cta .btn { display: none; } }
+
+/* Sections the phone doesn't need twice.
+   At 390px the homepage ran 16 screens deep. Four of its sections are
+   reproduced in full elsewhere on the site, so on a phone they are dropped
+   and the reader is one tap from each of them:
+     why CSA Africa exists     -> about.html      (hero CTA "Read our story")
+     what makes us different   -> about.html
+     our Python workshops      -> workshops.html  (hero CTA "Explore the workshops")
+     past and future workshops -> workshops.html, and every edition is its
+                                  own entry under Programmes in the menu
+   Kept: the hero, INUKA (an announcement, not a menu section), the impact
+   numbers, the testimonials (Alumni Voices in the menu points AT them and
+   they live nowhere else), the alumni films, the partners and the closing
+   CTA -- about nine screens instead of sixteen.
+   Screen only: printing should still produce the whole page. */
+@media screen and (max-width: 760px) {
+  .wide-only { display: none; }
+  /* the founder story is the light band between INUKA and the stats;
+     with it gone the two dark bands meet, so mark the join. */
+  .band-dark + .band-dark { border-top: 1px solid var(--line-dark); }
+}
 @media (min-width: 1231px) { .burger { display: none; } }
 .burger span {
   display: block;
@@ -930,6 +951,14 @@ body.nav-open { overflow: hidden; }
 .stats-grid--light { border-top-color: var(--line); border-left-color: var(--line); }
 .stats-grid--light .stat { border-right-color: var(--line); border-bottom-color: var(--line); }
 @media (min-width: 560px) { .stats-grid--light { grid-template-columns: repeat(2, 1fr); } }
+/* auto-fit needs 180px a column, which is one column on a phone and five
+   full rows of it. Two narrower columns halve the band. */
+@media (max-width: 559px) {
+  .stats-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .stat { padding: 1.4rem 1rem; }
+  .stat b { font-size: 2.15rem; }
+  .stat span { font-size: 0.8125rem; }
+}
 @media (min-width: 940px) { .stats-grid--light { grid-template-columns: repeat(4, 1fr); } }
 .stats-grid--light .stat b { color: var(--navy); }
 .stats-grid--light .stat span { color: var(--ink-2); }

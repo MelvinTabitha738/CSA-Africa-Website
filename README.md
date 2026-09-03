@@ -125,9 +125,44 @@ padding supplies the breathing room, so a larger value would just push the
 heading down the screen. Measured landing clearance below the header is 73px at
 1440, 49px at 1180 and 27px at 390.
 
-A sixth nav item also needed more room than five, so the mobile drawer now takes
-over at 1180px rather than 1080px (CSS and the JS resize guard both), and the
-links tighten between 1181 and 1340px.
+A sixth nav item also needed more room than five, so the mobile drawer takes
+over at 1230px rather than 1080px (CSS and the JS resize guard both), and the
+links tighten between 1231 and 1400px.
+
+### The mobile homepage
+
+At 390px the homepage ran 13854px — sixteen screens. Four of its sections are
+reproduced in full elsewhere on the site, so `.wide-only` drops them below
+760px (the same width at which the announce bar and the header buttons give
+way):
+
+| Hidden on a phone | Where it still lives |
+| --- | --- |
+| Why CSA Africa exists | `about.html` — and the hero's "Read our story" CTA |
+| What makes us different | `about.html` |
+| Our Python Workshops + timeline | `workshops.html` — hero CTA "Explore the workshops" |
+| Past and future workshops | `workshops.html`, and each edition is its own Programmes entry |
+
+What stays is the hero, INUKA (an announcement, not a menu section), the impact
+numbers, the testimonials, the alumni films, the partners and the closing CTA:
+7486px, or nine screens. Nothing above 760px changes — desktop is byte for
+byte the page it was.
+
+Two things the cut depends on:
+
+- **The testimonials stay.** Alumni Voices in the menu points *at* them and
+  they appear on no other page, so hiding them would both delete content from
+  phones and leave that menu entry with nowhere to land.
+- **`.band-dark + .band-dark`** gets a hairline top border below 760px. The
+  founder story was the light band separating INUKA from the stats band; with
+  it gone the two dark bands meet and need the join marked.
+
+The rule is `@media screen and (...)` on purpose — printing still produces the
+whole page.
+
+The stats band is a phone fix rather than a cut: its `auto-fit` tracks want
+180px, which is one column and five full rows on a 390px screen. Below 560px it
+is pinned to two columns with a smaller number, taking it from 1072px to 755px.
 
 ### Partner logos
 

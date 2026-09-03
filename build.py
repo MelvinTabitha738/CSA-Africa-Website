@@ -538,7 +538,7 @@ def home():
 </section>
 
 <!-- ---------------------------------------------------------- why -->
-<section class="section">
+<section class="section wide-only">
   <div class="shell--wide">
     <div class="split split--wide-media">
       <div>
@@ -566,7 +566,7 @@ def home():
 </section>
 
 <!-- ---------------------------------------------------------- difference -->
-<section class="section band-stone">
+<section class="section band-stone wide-only">
   <div class="shell--wide">
     <div class="sec-head sec-head--split">
       <div data-reveal>
@@ -595,7 +595,7 @@ def home():
 </section>
 
 <!-- ---------------------------------------------------------- workshops -->
-<section class="section">
+<section class="section wide-only">
   <div class="shell--wide">
     <div class="split split--flip">
       <div>
@@ -624,7 +624,7 @@ def home():
 </section>
 
 <!-- ---------------------------------------------------------- editions -->
-<section class="section band-stone">
+<section class="section band-stone wide-only">
   <div class="shell--wide">
     <div class="sec-head sec-head--split">
       <div data-reveal>
