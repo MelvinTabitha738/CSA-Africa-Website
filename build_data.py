@@ -390,72 +390,64 @@ ALUMNI_FILMS = [
 ]
 
 # ---------------------------------------------------------------- INUKA
+# INUKA Mombasa has happened. The copy below is past tense throughout; the
+# pitch version - application CTAs, deadlines, "what you'll walk away with" -
+# is in git history, and belongs there rather than on a page about an event
+# that is over.
 INUKA = {
     "title": "INUKA Mombasa",
     # The event's own line, from the printed programme booklet.
     "tagline": "Believe. See. Build. Rise.",
     "partners": "In partnership with NAA’M Initiative and Swahilipot Hub Foundation",
     "venue": "Swahilipot Hub Foundation, Mombasa",
-    "dates": "10 - 13 September (4 days)",
-    "close": "Friday 28 August 2026",
-    # Flip back to True (and put the copy below into the future tense) when a
-    # new call opens. build.py reads this to decide whether the apply CTA is a
-    # live link or an inert "Applications closed" label.
-    "applications_open": False,
-    "spots": "60 spots only",
+    "dates": "10 &#8211; 13 September 2026",
+    "status": "Completed",
+    # At a glance. Every figure here is one we hold: four days and two panels
+    # from the programme, eighteen from INUKA_PEOPLE, sixty from the published
+    # cap. Attendance and application numbers are not yet known, so they are
+    # not guessed at.
+    "stats": [
+        ("4", "Days in Mombasa"),
+        ("18", "Speakers, panellists and facilitators"),
+        ("2", "Panel sessions"),
+        ("60", "Places, half reserved for women"),
+    ],
     "why": [
-        "For eight years, CSA Africa has taught young Africans to code. Along the way, we noticed "
-        "something no curriculum fixes: talented young people holding back from a belief that people "
-        "like them don’t belong in the room. So this year, for the first time, we’re running "
+        "For eight years, CSA Africa had taught young Africans to code. Along the way we noticed "
+        "something no curriculum fixes: talented young people holding back from a belief that "
+        "people like them don’t belong in the room. So in 2026, for the first time, we ran "
         "something different.",
-        "INUKA Mombasa is CSA Africa’s first mindset transformation event. This is for you whether "
-        "you are interested in tech, creative arts, media, and so on. No coding experience or "
-        "technical background required, just a willingness to challenge what you believe is possible "
-        "for your life.",
+        "INUKA Mombasa was CSA Africa’s first mindset transformation event, open to anyone drawn "
+        "to tech, the creative arts, media and beyond. No coding experience or technical "
+        "background was required — only a willingness to challenge what they believed was "
+        "possible for their lives.",
     ],
     "beyond": [
-        "Access to opportunity was never only about skills, it was about belief. About seeing what’s "
-        "possible. About someone showing up in your corner before you showed up for yourself.",
-        "INUKA Mombasa proves that mindset transformation matters just as much as learning to code, "
-        "because without the first, the second rarely sticks.",
+        "Access to opportunity was never only about skills, it was about belief. About seeing "
+        "what’s possible. About someone showing up in your corner before you showed up for "
+        "yourself.",
+        "INUKA Mombasa proved that mindset transformation matters just as much as learning to "
+        "code, because without the first, the second rarely sticks.",
     ],
-    "walkaway": [
-        "A clear, personal answer to “what’s actually possible for me”",
-        "Real relationships with mentors and peers who hold you accountable",
-        "Something tangible you built yourself",
+    "took_away": [
+        "A clear, personal answer to &#8220;what’s actually possible for me&#8221;",
+        "Real relationships with mentors and peers who hold them accountable",
+        "Something tangible they built themselves",
         "One courageous next step already in motion, and a community behind it",
     ],
-    "walkaway_note": "This is four days of real work on your mindset, your confidence, and your next "
-                     "move in life and career.",
-    "speakers": [
-        ("Dr Sofiat Olaosebikan",
-         "Lecturer in Computing Science, University of Glasgow, and Founder of CSA Africa",
-         "Sofiat applied to study Computer Science three times as an undergraduate applicant and "
-         "failed three times. She grew up in an underserved neighbourhood in Lagos with no one to "
-         "guide her into a career in tech, and today lectures in the very subject she once "
-         "couldn’t get admitted to study. She’ll share exactly how she got from there to here.",
-         LINKS["sofiat_site"]),
-        ("Nadia Abdalla",
-         "Founder of the NAA’M Initiative and a former Chief Administrative Secretary in the "
-         "Government of Kenya",
-         "Long before she held that title, Nadia was a product of Swahilipot Hub herself, proof that "
-         "the room you grow up in can become the room you go on to lead. She’ll share what it took "
-         "to go from being someone the system supported to someone shaping the system.",
-         None),
-    ],
-    "also": "You’ll also meet alumni from CSA Africa’s past programmes, young women who walked "
-            "into our programme with the same doubts you might be carrying, and walked out doing "
-            "things they didn’t think were possible for them. And you’ll be hosted at "
-            "Swahilipot Hub, Mombasa’s own home for youth innovation, alongside its mentors and "
-            "community.",
-    "wait": [
-        "Spaces were capped at 60 with 50% reserved for women. Applications closed on Friday "
-        "28 August 2026.",
-        "Selection was competitive and included a short video. Everyone who applied will hear "
-        "from the CSA Africa team directly.",
-        "This programme is completely free to attend.",
-        "Lunch is provided.",
-        "All we ask is your full presence for four days, no exceptions.",
+    "took_away_note": "Four days of real work on mindset, confidence, and what comes next in "
+                      "life and career.",
+    "also": "Participants also met alumni from CSA Africa’s past programmes — young women "
+            "who had walked into the programme carrying the same doubts, and walked out doing "
+            "things they had not thought possible for themselves. They were hosted at Swahilipot "
+            "Hub, Mombasa’s own home for youth innovation, alongside its mentors and community.",
+    # Facts worth keeping from the call for applications; the deadline and the
+    # application mechanics are not, now that it has run.
+    "facts": [
+        "Sixty places, half of them reserved for women.",
+        "Free to attend, with lunch provided.",
+        "Selection was competitive and included a short video.",
+        "Participants gave their full presence for four days.",
     ],
 }
 

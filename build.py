@@ -86,36 +86,6 @@ def rail_controls(what, cls=""):
     )
 
 
-APPLY_OPEN = D.INUKA.get("applications_open", True)
-
-
-def apply_btn(cls="btn--amber", dark=False):
-    """The INUKA application CTA.
-
-    Once D.INUKA["applications_open"] is False this stops being a link and
-    becomes an inert label, so nothing on the site points at a form that is no
-    longer taking entries. Pass dark=True on a dark surface."""
-    if APPLY_OPEN:
-        return ('<a class="btn %s" href="%s" target="_blank" rel="noopener">Apply now %s</a>'
-                % (cls, D.LINKS["inuka_apply"], ARW))
-    return ('<span class="btn btn--closed%s">Applications closed</span>'
-            % (" btn--closed-on-dark" if dark else ""))
-
-
-def deadline_line():
-    if APPLY_OPEN:
-        return "Applications close %s" % D.INUKA["close"]
-    return "Applications closed &#183; %s" % D.INUKA["close"]
-
-
-def deadline_note():
-    if APPLY_OPEN:
-        return ("Free to attend &#183; Lunch provided &#183; Women are strongly "
-                "encouraged to apply")
-    return ("Free to attend &#183; Lunch provided &#183; 60 places, half of them "
-            "reserved for women")
-
-
 def announce():
     """The promo strip that used to sit above the header. Not rendered: one
     navy strip above the nav is enough, and the topbar has that slot now.
@@ -162,7 +132,7 @@ def header(active):
     <div class="nav__group">
       <button class="nav__toggle" type="button" aria-expanded="false"{prog_open}>Programmes {chev}</button>
       <div class="nav__menu">
-        <a href="inuka-mombasa.html">INUKA Mombasa <em>Sept 2026</em></a>
+        <a href="inuka-mombasa.html">INUKA Mombasa <em>Sept 2026 &#183; Recap</em></a>
         <a href="workshops.html">Python Workshops <em>Annual</em></a>
         {editions}
       </div>
@@ -536,22 +506,21 @@ def home():
   <div class="shell--wide">
     <div class="split split--wide-text" style="align-items:center">
       <div>
-        <p class="eyebrow" data-reveal>Coming this September</p>
+        <p class="eyebrow" data-reveal>September 2026 &#183; Completed</p>
         <h2 class="h1" data-reveal>INUKA Mombasa</h2>
         <p class="lead" data-reveal style="margin-top:1.25rem;max-width:48ch">
-          CSA Africa&#8217;s first mindset transformation event, in partnership with NAA&#8217;M
-          initiative and <a class="ilink" href="{swahilipot}" target="_blank" rel="noopener">Swahilipot
+          CSA Africa&#8217;s first mindset transformation event, run with the NAA&#8217;M
+          Initiative and <a class="ilink" href="{swahilipot}" target="_blank" rel="noopener">Swahilipot
           Hub Foundation</a>.</p>
-        <p class="lead" data-reveal style="max-width:48ch">Four days in Mombasa, Kenya. No coding
-          required, just the courage to challenge what you believe is possible.</p>
+        <p class="lead" data-reveal style="max-width:48ch">Four days in Mombasa, Kenya. Sixty
+          places, eighteen speakers, and no coding required &#8212; only the courage to challenge
+          what you believe is possible.</p>
         <ul class="detail-list" data-reveal style="margin-top:2.25rem;max-width:34rem">
           <li><span class="k">Dates</span><span class="v">{dates}</span></li>
           <li><span class="k">Venue</span><span class="v">{venue}</span></li>
-          <li><span class="k">Places</span><span class="v">{spots} &#183; 50% reserved for women</span></li>
         </ul>
         <div class="btn-row" data-reveal style="margin-top:2rem">
-          <a class="btn btn--amber" href="inuka-mombasa.html">Learn more {arw}</a>
-          {inuka_cta}
+          <a class="btn btn--amber" href="inuka-mombasa.html">See what happened {arw}</a>
         </div>
       </div>
       <div class="split__media" data-reveal><div class="framed">{inuka_img}</div>
@@ -715,8 +684,8 @@ def home():
                      "A CSA Africa t-shirt printed with the words: Empowering young Africans with computing skills",
                      cls="hero__poster", eager=True, sizes="100vw"),
         org=D.ORG, arw=ARW,
-        swahilipot=D.LINKS["swahilipot"], inuka_cta=apply_btn("btn--on-dark", dark=True),
-        dates=D.INUKA["dates"], venue=esc(D.INUKA["venue"]), spots=esc(D.INUKA["spots"]),
+        swahilipot=D.LINKS["swahilipot"],
+        dates=D.INUKA["dates"], venue=esc(D.INUKA["venue"]),
         inuka_img=img("story/session", "A CSA Africa session in progress at the 2025 workshop"),
         sofiat=D.LINKS["sofiat_gla"],
         founder_img=img("story/founder-story",
@@ -1127,12 +1096,28 @@ def inuka_panels():
     return "".join(out)
 
 
-def inuka_people(sessions, cls=""):
-    """Bio cards for the people in the given session buckets."""
+def inuka_people(sessions):
+    """Full bio cards. Used only for the two featured speakers."""
     return "".join(
-        '<article class="speaker{c}" data-reveal><div><h3 class="speaker__name">{n}</h3>'
+        '<article class="speaker" data-reveal><div><h3 class="speaker__name">{n}</h3>'
         '<p class="speaker__role">{r}</p></div><div><p>{b}</p></div></article>'.format(
-            c=(" " + cls) if cls else "", n=esc(n), r=r, b=b)
+            n=esc(n), r=r, b=b)
+        for n, r, b, sess in D.INUKA_PEOPLE if sess in sessions)
+
+
+def inuka_roster(sessions):
+    """The long roster, compact.
+
+    Eighteen full biographies is a wall of text on a page whose job is to say
+    what happened. Name and role are always visible - that is what a visitor
+    scanning the roster actually needs - and the biography opens on demand.
+    Nothing is cut: choosing which half of someone's bio to show would mean
+    editing their words, so the disclosure shows all of it or none."""
+    return "".join(
+        '<article class="person" data-reveal>'
+        '<h3 class="person__name">{n}</h3><p class="person__role">{r}</p>'
+        '<details class="person__more"><summary>Biography</summary><p>{b}</p></details>'
+        '</article>'.format(n=esc(n), r=r, b=b)
         for n, r, b, sess in D.INUKA_PEOPLE if sess in sessions)
 
 
@@ -1140,36 +1125,32 @@ def inuka():
     I = D.INUKA
     why = "".join('<p>%s</p>' % esc(p) for p in I["why"])
     beyond = "".join('<p>%s</p>' % esc(p) for p in I["beyond"])
-    walk = "".join('<li>%s</li>' % esc(t) for t in I["walkaway"])
-    wait = "".join('<li>%s</li>' % esc(t) for t in I["wait"])
     featured = inuka_people(("featured",))
-    hosts = inuka_people(("mc",), "speaker--sm")
-    panellists = inuka_people(("panel-1", "panel-2"), "speaker--sm")
-    others = inuka_people((None,), "speaker--sm")
+    roster = inuka_roster(("mc", "panel-1", "panel-2", None))
     panels = inuka_panels()
+    stats = "".join('<div class="stat" data-reveal><b>%s</b><span>%s</span></div>' % (v, esc(l))
+                    for v, l in I["stats"])
+    took = "".join('<li>%s</li>' % t for t in I["took_away"])
+    facts = "".join('<li>%s</li>' % esc(t) for t in I["facts"])
 
     body = """
 <section class="phero" style="min-height:clamp(460px,72vh,720px)">
   <div class="phero__media">{hero}</div>
   <div class="phero__scrim"></div>
   <div class="shell--wide">
-    <p class="eyebrow">{partners}</p>
+    <p class="eyebrow"><span class="chip">{status}</span> {partners}</p>
     <h1 class="display" style="font-size:clamp(2.6rem,6.4vw,5.4rem)">INUKA Mombasa</h1>
     <p class="phero__sub serif-em" style="font-size:clamp(1.15rem,2vw,1.6rem);color:#fff">{tagline}</p>
     <div class="phero__meta">
-      <span>{dates}</span><span>{venue}</span><span>{spots}</span>
-    </div>
-    <div class="btn-row" style="margin-top:2rem">
-      {inuka_cta}
+      <span>{dates}</span><span>{venue}</span>
     </div>
   </div>
 </section>
 
-<section class="band-dark" style="padding-block:1.5rem">
-  <div class="shell--wide" style="display:flex;flex-wrap:wrap;gap:.75rem 2rem;align-items:center;justify-content:space-between">
-    <p style="margin:0;font-family:var(--mono);font-size:.75rem;letter-spacing:.14em;text-transform:uppercase;color:var(--amber)">
-      {close_line}</p>
-    <p style="margin:0;color:var(--on-dark-2);font-size:.9375rem">{close_note}</p>
+<section class="section--tight section">
+  <div class="shell--wide">
+    <p class="eyebrow" data-reveal>At a glance</p>
+    <div class="stats-grid stats-grid--light" data-reveal-group style="margin-top:1.5rem">{stats}</div>
   </div>
 </section>
 
@@ -1177,7 +1158,7 @@ def inuka():
   <div class="shell--wide">
     <div class="split split--wide-text split--top">
       <div class="prose">
-        <p class="eyebrow" data-reveal>Why this exists</p>
+        <p class="eyebrow" data-reveal>Why it existed</p>
         <h2 class="h2" data-reveal style="max-width:18ch">Something no curriculum fixes</h2>
         <div data-reveal style="margin-top:1.75rem">{why}</div>
       </div>
@@ -1199,12 +1180,13 @@ def inuka():
   <div class="shell--wide">
     <div class="sec-head sec-head--split">
       <div data-reveal>
-        <p class="eyebrow">What you&#8217;ll walk away with</p>
-        <h2 class="h2">Four days, four things you keep</h2>
+        <p class="eyebrow">In the room</p>
+        <h2 class="h2" style="max-width:16ch">Two panels, six voices</h2>
       </div>
-      <p class="lead" data-reveal>{note}</p>
+      <p class="lead" data-reveal>Both panels were moderated by CSA Africa alumni from the
+        2025 cohort &#8212; participants a year earlier, holding the microphone this time.</p>
     </div>
-    <ul class="checklist" data-reveal style="max-width:64ch;font-size:1.1rem">{walk}</ul>
+    <div class="panels" data-reveal-group>{panels}</div>
   </div>
 </section>
 
@@ -1218,46 +1200,16 @@ def inuka():
     </div>
     {featured}
     <p class="lead" data-reveal style="margin-top:2.5rem;max-width:70ch">{also}</p>
-  </div>
-</section>
 
-<section class="section">
-  <div class="shell--wide">
-    <div class="sec-head sec-head--split">
+    <div class="sec-head sec-head--split" style="margin-top:clamp(3.5rem,7vw,6rem)">
       <div data-reveal>
-        <p class="eyebrow">In the room</p>
-        <h2 class="h2" style="max-width:16ch">Two panels, six voices</h2>
+        <p class="eyebrow">The full roster</p>
+        <h2 class="h2" style="max-width:20ch">Everyone who led a session</h2>
       </div>
-      <p class="lead" data-reveal>Both panels were moderated by CSA Africa alumni from the
-        2025 cohort &#8212; participants two years ago, holding the microphone this time.</p>
+      <p class="lead" data-reveal>Sixteen more speakers, panellists and facilitators across the
+        four days. Open any name to read their biography.</p>
     </div>
-    <div class="panels" data-reveal-group>{panels}</div>
-  </div>
-</section>
-
-<section class="section band-stone">
-  <div class="shell--wide">
-    <div class="sec-head sec-head--split">
-      <div data-reveal>
-        <p class="eyebrow">Host</p>
-        <h2 class="h2">Master of ceremonies</h2>
-      </div>
-    </div>
-    {hosts}
-    <div class="sec-head sec-head--split" style="margin-top:clamp(3rem,6vw,5rem)">
-      <div data-reveal>
-        <p class="eyebrow">Panellists</p>
-        <h2 class="h2">The six who sat on the panels</h2>
-      </div>
-    </div>
-    {panellists}
-    <div class="sec-head sec-head--split" style="margin-top:clamp(3rem,6vw,5rem)">
-      <div data-reveal>
-        <p class="eyebrow">Speakers and facilitators</p>
-        <h2 class="h2" style="max-width:18ch">Who else led sessions across the four days</h2>
-      </div>
-    </div>
-    {others}
+    <div class="people-grid" data-reveal-group>{roster}</div>
   </div>
 </section>
 
@@ -1265,35 +1217,28 @@ def inuka():
   <div class="shell--wide">
     <div class="split split--wide-text split--top">
       <div>
-        <p class="eyebrow" data-reveal>{wait_eyebrow}</p>
-        <h2 class="h2" data-reveal style="max-width:16ch">60 places. Half reserved for women.</h2>
-        <ul class="hl-list" data-reveal style="margin-top:2rem">{wait}</ul>
-        <div class="btn-row" data-reveal style="margin-top:2.5rem">
-          {inuka_cta_light}
-          <a class="btn btn--ghost" href="{swahilipot}" target="_blank" rel="noopener">Swahilipot Hub {arw}</a>
-        </div>
+        <p class="eyebrow" data-reveal>What they took away</p>
+        <h2 class="h2" data-reveal style="max-width:16ch">Four days, four things they keep</h2>
+        <p class="lead" data-reveal style="margin-top:1.25rem">{note}</p>
+        <ul class="checklist" data-reveal style="margin-top:2rem;max-width:64ch">{took}</ul>
       </div>
-      <div data-reveal><div class="split__media">{img2}</div></div>
+      <div data-reveal>
+        <div class="split__media">{img2}</div>
+        <ul class="facts" style="margin-top:1.5rem">{facts}</ul>
+      </div>
     </div>
   </div>
 </section>
 
 {cta}
 """.format(
-        hero=img("story/inuka-hero", "CSA Africa participants celebrating together", eager=True, sizes="100vw"),
-        partners=esc(I["partners"]), tagline=esc(I["tagline"]), dates=I["dates"],
-        venue=esc(I["venue"]), spots=esc(I["spots"]),
-        close_line=deadline_line(), close_note=deadline_note(),
-        wait_eyebrow="Why you shouldn&#8217;t wait" if APPLY_OPEN else "Places and selection",
-        inuka_cta=apply_btn("btn--amber", dark=True),
-        inuka_cta_light=apply_btn("btn--amber"), arw=ARW,
-        why=why, beyond=beyond, walk=walk, wait=wait,
-        featured=featured, hosts=hosts, panellists=panellists,
-        others=others, panels=panels,
-        note=esc(I["walkaway_note"]), also=esc(I["also"]),
-        swahilipot=D.LINKS["swahilipot"],
-        img1=img("story/peer-learning", "CSA Africa participants working side by side"),
-        img2=img("story/cohort", "A CSA Africa cohort together at the end of the workshop"),
+        hero=img("story/inuka-hero", "INUKA Mombasa participants together", eager=True, sizes="100vw"),
+        status=I["status"], partners=esc(I["partners"]), tagline=esc(I["tagline"]),
+        dates=I["dates"], venue=esc(I["venue"]), stats=stats,
+        why=why, beyond=beyond, took=took, facts=facts, note=esc(I["took_away_note"]),
+        featured=featured, roster=roster, panels=panels, also=esc(I["also"]),
+        img1=img("story/peer-learning", "INUKA Mombasa participants working side by side"),
+        img2=img("story/cohort", "Participants together at the close of INUKA Mombasa"),
         cta=cta_band())
 
     return page("inuka-mombasa.html", "INUKA Mombasa 2026 — Believe. See. Build. Rise.",

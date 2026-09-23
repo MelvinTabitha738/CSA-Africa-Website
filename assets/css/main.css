@@ -1739,12 +1739,96 @@ body.nav-open { overflow: hidden; }
 .speaker__name { font-family: var(--serif); font-size: clamp(1.35rem, 2.2vw, 1.9rem); font-weight: 400; letter-spacing: -0.022em; }
 .speaker__role { margin-top: 0.5rem; font-size: 0.875rem; color: var(--amber-deep); font-weight: 600; line-height: 1.45; }
 
-/* A denser speaker card for the long rosters - same grammar, less air, so
-   eighteen bios do not become eighteen screens. */
-.speaker--sm { padding-block: clamp(1.25rem, 2.2vw, 1.75rem); }
-.speaker--sm .speaker__name { font-size: clamp(1.15rem, 1.7vw, 1.45rem); }
-.speaker--sm .speaker__role { font-size: 0.8125rem; }
-.speaker--sm p { font-size: 0.9375rem; color: var(--ink-2); }
+/* The roster: name and role always visible, biography on demand. Sixteen
+   full bios stacked is a wall of text on a page whose job is to say what
+   happened. Auto-fit so it is 1 column on a phone and 3 on a desktop without
+   naming a single breakpoint. */
+.people-grid {
+  display: grid;
+  gap: clamp(0.75rem, 2vw, 1.25rem);
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 17rem), 1fr));
+}
+.person {
+  border: 1px solid var(--line);
+  background: var(--white);
+  padding: clamp(1.1rem, 2.2vw, 1.5rem);
+}
+.person__name {
+  font-family: var(--serif);
+  font-size: 1.15rem;
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  line-height: 1.25;
+}
+.person__role {
+  margin-top: 0.4rem;
+  font-size: 0.8125rem;
+  line-height: 1.45;
+  color: var(--amber-deep);
+  font-weight: 600;
+}
+.person__more { margin-top: 0.9rem; }
+.person__more summary {
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: var(--mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-2);
+  list-style: none;
+}
+.person__more summary::-webkit-details-marker { display: none; }
+.person__more summary::after {
+  content: "+";
+  font-size: 0.9rem;
+  line-height: 1;
+  transition: transform 0.2s var(--ease);
+}
+.person__more[open] summary::after { content: "\2212"; }
+.person__more summary:hover { color: var(--navy); }
+.person__more summary:focus-visible { outline: 2px solid var(--amber); outline-offset: 3px; }
+.person__more p {
+  margin-top: 0.8rem;
+  font-size: 0.9063rem;
+  line-height: 1.6;
+  color: var(--ink-2);
+}
+
+/* "Completed" beside the partner line in the hero. */
+.chip {
+  display: inline-block;
+  padding: 0.2rem 0.55rem;
+  margin-right: 0.5rem;
+  border: 1px solid var(--amber);
+  border-radius: 999px;
+  color: var(--amber);
+  font-size: 0.6875rem;
+  letter-spacing: 0.12em;
+}
+/* On a narrow hero the chip and the partner line fight for one short column,
+   so the chip takes its own line. */
+@media (max-width: 620px) {
+  .chip { display: block; width: max-content; margin: 0 0 0.6rem; }
+}
+
+.facts { list-style: none; display: grid; gap: 0.55rem; }
+.facts li {
+  position: relative;
+  padding-left: 1.1rem;
+  font-size: 0.9063rem;
+  color: var(--ink-2);
+}
+.facts li::before {
+  content: "";
+  position: absolute;
+  left: 0; top: 0.6em;
+  width: 5px; height: 5px;
+  border-radius: 50%;
+  background: var(--amber);
+}
 
 /* Panels: the head states the session, the body what each voice was asked to
    speak to. Single column on a phone, two from 900px. */
