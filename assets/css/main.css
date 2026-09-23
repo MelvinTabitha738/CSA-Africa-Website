@@ -842,9 +842,13 @@ body.nav-open { overflow: hidden; }
    well clear of AA while letting the photograph read. */
 .phero--photo .phero__scrim {
   background:
-    linear-gradient(180deg, rgba(8, 12, 44, 0.50) 0%, rgba(8, 12, 44, 0.16) 34%, rgba(8, 12, 44, 0.66) 74%, rgba(8, 12, 44, 0.88) 100%),
-    linear-gradient(92deg, rgba(8, 12, 44, 0.62) 0%, rgba(8, 12, 44, 0.18) 58%, rgba(8, 12, 44, 0.02) 100%);
+    linear-gradient(180deg, rgba(8, 12, 44, 0.50) 0%, rgba(8, 12, 44, 0.16) 26%, rgba(8, 12, 44, 0.74) 56%, rgba(8, 12, 44, 0.90) 100%),
+    linear-gradient(92deg, rgba(8, 12, 44, 0.72) 0%, rgba(8, 12, 44, 0.26) 58%, rgba(8, 12, 44, 0.04) 100%);
 }
+/* The partner credit is small mono type sitting over faces. In amber it
+   measured 1.8:1 against the brightest part of that background, so it reads
+   in white and keeps amber for the chip, which is larger and has a border. */
+.phero--photo .eyebrow__txt { color: rgba(255, 255, 255, 0.94); }
 
 .phero h1 { max-width: 18ch; text-wrap: balance; }
 .phero__sub { margin-top: 1.25rem; max-width: 58ch; color: rgba(255, 255, 255, 0.84); font-size: var(--fs-lead); }
