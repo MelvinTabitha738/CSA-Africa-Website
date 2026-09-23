@@ -202,6 +202,39 @@
     });
   });
 
+  /* ------------------------------------------------------------ long bios */
+  // Collapse a long biography to its opening lines behind a Read more. The
+  // clamp lives here rather than in the stylesheet so that without JavaScript
+  // the full text is simply shown - a CSS-only clamp would cut it off with no
+  // way to open it.
+  $$('[data-bio]').forEach(function (bio) {
+    var text = $('.bio__text', bio);
+    var btn = $('.bio__more', bio);
+    if (!text || !btn) return;
+
+    var fits = function () {
+      // Measure against the collapsed height the stylesheet would apply.
+      var max = parseFloat(getComputedStyle(text).fontSize) * 10.5;
+      return text.scrollHeight <= max + 4;
+    };
+
+    // A bio short enough to fit needs no control, the same way a rail that
+    // does not scroll retires its arrows.
+    if (fits()) return;
+
+    bio.classList.add('bio--clamped', 'bio--enhanced');
+
+    btn.addEventListener('click', function () {
+      var open = bio.classList.toggle('bio--open');
+      btn.setAttribute('aria-expanded', String(open));
+      btn.textContent = open ? 'Read less' : 'Read more';
+      if (!open) {
+        var top = bio.getBoundingClientRect().top;
+        if (top < 0) bio.scrollIntoView({ block: 'start', behavior: reduced ? 'auto' : 'smooth' });
+      }
+    });
+  });
+
   /* ------------------------------------------------------------ gallery lightbox */
   var gallery = $('[data-gallery]');
   if (gallery) {

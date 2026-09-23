@@ -1100,7 +1100,10 @@ def inuka_people(sessions):
     """Full bio cards, for the organisers and the featured speaker."""
     return "".join(
         '<article class="speaker" data-reveal><div><h3 class="speaker__name">{n}</h3>'
-        '<p class="speaker__role">{r}</p>{link}</div><div><p>{b}</p></div></article>'.format(
+        '<p class="speaker__role">{r}</p>{link}</div>'
+        '<div class="bio" data-bio><p class="bio__text">{b}</p>'
+        '<button class="bio__more" type="button" aria-expanded="false">Read more</button>'
+        '</div></article>'.format(
             n=esc(n), r=r, b=b,
             link=('<p style="margin-top:1rem"><a class="tlink" href="%s" target="_blank" '
                   'rel="noopener">Visit website %s</a></p>' % (u, ARW)) if u else "")

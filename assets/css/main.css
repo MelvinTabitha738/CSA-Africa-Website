@@ -1739,6 +1739,51 @@ body.nav-open { overflow: hidden; }
 .speaker__name { font-family: var(--serif); font-size: clamp(1.35rem, 2.2vw, 1.9rem); font-weight: 400; letter-spacing: -0.022em; }
 .speaker__role { margin-top: 0.5rem; font-size: 0.875rem; color: var(--amber-deep); font-weight: 600; line-height: 1.45; }
 
+/* A long biography, collapsed to its opening lines with a fade and a
+   toggle. The clamp is applied by JavaScript, not here: without it the text
+   would be cut off with no way to open it. main.js also retires the button
+   when a bio is short enough to fit, the same way the rails retire their
+   arrows rather than leave a control that does nothing. */
+.bio { position: relative; }
+.bio--clamped .bio__text {
+  max-height: var(--bio-max, 10.5em);
+  overflow: hidden;
+}
+.bio--clamped .bio__text::after {
+  content: "";
+  position: absolute;
+  left: 0; right: 0;
+  top: calc(var(--bio-max, 10.5em) - 3.2em);
+  height: 3.2em;
+  background: linear-gradient(to bottom, rgba(244, 241, 235, 0), var(--paper-2));
+  pointer-events: none;
+}
+.bio--open .bio__text { max-height: none; }
+.bio--open .bio__text::after { display: none; }
+.bio__more {
+  display: none;
+  margin-top: 0.9rem;
+  padding: 0;
+  background: none;
+  border: 0;
+  border-bottom: 1px solid var(--line);
+  cursor: pointer;
+  font-family: var(--mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-2);
+  transition: color 0.2s var(--ease), border-color 0.2s var(--ease);
+}
+.bio--enhanced .bio__more { display: inline-block; }
+.bio__more::after { content: " +"; }
+.bio--open .bio__more::after { content: " \2212"; }
+.bio__more:hover { color: var(--navy); border-color: var(--navy); }
+.bio__more:focus-visible { outline: 2px solid var(--amber); outline-offset: 3px; }
+@media (prefers-reduced-motion: no-preference) {
+  .bio__text { transition: max-height 0.35s var(--ease); }
+}
+
 /* The roster: name and role always visible, biography on demand. Sixteen
    full bios stacked is a wall of text on a page whose job is to say what
    happened. Auto-fit so it is 1 column on a phone and 3 on a desktop without
