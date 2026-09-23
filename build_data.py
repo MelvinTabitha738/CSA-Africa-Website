@@ -121,7 +121,7 @@ EDITION_PAGES = {
                   ("40", "Local travel reimbursed"), ("6", "Childcare support for parents")],
         "highlights": [
             "Participants joined us from Kenya, Nigeria, Ghana, Uganda, Rwanda, Tanzania, Eswatini, Cameroon, and Togo.",
-            "One mother attended with her three-year-old son — made possible through our on ground childcare support.",
+            "One mother attended with her three-year-old son, made possible through our on ground childcare support.",
             "Three concurrent learning tracks: Python fundamentals, Python for Software Engineering, and Python for Data Science.",
             "Industry experts shared insights on career opportunities, scholarships, and professional networking at our mini-conference.",
             "Participants reported improved: programming confidence, problem-solving skills, networking, and collaboration abilities.",
@@ -139,7 +139,7 @@ EDITION_PAGES = {
                   ("15", "Tutors and volunteers"), ("126", "Participants accommodated"),
                   ("36", "Local travel reimbursed"), ("4", "Childcare support for parents")],
         "highlights": [
-            "Three mothers attended with their children — made possible through our on ground childcare support.",
+            "Three mothers attended with their children, made possible through our on ground childcare support.",
             "Four concurrent learning tracks: Python fundamentals, Data Structures and Algorithms, Python for Internet of Things, and Introduction to Machine Learning.",
             "Hosted “Breaking the Glass Ceiling” mini-conference featuring 4 Nigerian women in tech. This conference also included an anonymous barrier-sharing session revealing systemic challenges, as well as a kindness session where attendees wrote encouraging notes to one another.",
             "Participants reported improved programming confidence and problem-solving skills.",
@@ -176,7 +176,7 @@ EDITION_PAGES = {
                   ("2", "Concurrent learning tracks"), ("7", "Tutors and volunteers")],
         "highlights": [
             "The workshop’s impact led the University of Rwanda to incorporate Python programming into their official curriculum.",
-            "One participant travelled 25 hours by road from Kenya to attend — many juggled work and family commitments to participate.",
+            "One participant travelled 25 hours by road from Kenya to attend. Many juggled work and family commitments to participate.",
             "Two CSA 2018 alumni (Ifeoma and Paul from University of Ibadan) returned as tutors, building capacity to organise future workshops.",
             "Participants split into two experience-based groups, covering everything from basic programming to data analysis, BBC micro:bit, and object-oriented Python.",
             "Teams built an interpreter and tackled data science challenges, presenting their work on the final day.",
@@ -420,7 +420,7 @@ INUKA = {
         "something different.",
         "INUKA Mombasa was CSA Africa’s first mindset transformation event, open to anyone drawn "
         "to tech, the creative arts, media and beyond. No coding experience or technical "
-        "background was required — only a willingness to challenge what they believed was "
+        "background was required, only a willingness to challenge what they believed was "
         "possible for their lives.",
     ],
     "beyond": [
@@ -438,7 +438,7 @@ INUKA = {
     ],
     "took_away_note": "Four days of real work on mindset, confidence, and what comes next in "
                       "life and career.",
-    "also": "Participants also met alumni from CSA Africa’s past programmes — young women "
+    "also": "Participants also met alumni from CSA Africa’s past programmes, young women "
             "who had walked into the programme carrying the same doubts, and walked out doing "
             "things they had not thought possible for themselves. They were hosted at Swahilipot "
             "Hub, Mombasa’s own home for youth innovation, alongside its mentors and community.",
@@ -741,6 +741,14 @@ INUKA_PEOPLE = [
      "a commitment to creating spaces where young people can lead, thrive and shape the future.",
      None, None),
 
+    # From the event's own speaker announcement cards rather than the booklet,
+    # which does not list him. His stated role overlaps Aseef Akram's; see the
+    # note under INUKA_PHOTOS.
+    ("Mohammed Gharib",
+     "Employer Engagement Lead, Global Opportunity Youth Network",
+     None,
+     None, None),
+
     ("Nancy Moraa Okemwa",
      "Communications Lead, Swahilipot Hub Foundation &#183; Strategic Communicator &amp; Storyteller",
      "Nancy Moraa Okemwa is a strategic communicator, storyteller and creative industry "
@@ -810,3 +818,34 @@ INUKA_PANELS = [
                    "position themselves for a meaningful opportunity?",
     },
 ]
+
+
+# Portraits, cropped from the event's speaker announcement cards. Keyed by name
+# so the tuples above stay readable; build.py skips anyone missing.
+#
+# Two people have no portrait: Aseef Akram and Pheny Mwaisaka. Neither had a
+# card in the set.
+#
+# The cards spell three names differently from the booklet - Fatma/Fatuma Ali,
+# Kauthar Mohammed/Mohamed, Melvin/Melvine Tabitha Opondo. The booklet spelling
+# is kept, since that is what the organisers printed.
+INUKA_PHOTOS = {
+    "Maham Hussein": "maham-hussein",
+    "Dr Sofiat Olaosebikan": "sofiat-olaosebikan",
+    "Dr Swalhah Yusuf, OGW": "swalhah-yusuf",
+    "Melvine Tabitha Opondo": "melvine-tabitha-opondo",
+    "Fatuma Ali": "fatuma-ali",
+    "Haytam Isse Abdullahi": "haytam-isse-abdullahi",
+    "Kauthar Mohamed": "kauthar-mohamed",
+    "Edwin Njuga": "edwin-njuga",
+    "Abdulkadir Aweis (Dadir)": "abdulkadir-aweis",
+    "Mohammed Gharib": "mohammed-gharib",
+    "Nadia Abdalla": "nadia-abdalla",
+    "Dr Hafidha Ahmed": "hafidha-ahmed",
+    "Hon. Patrick Mbelle": "patrick-mbelle",
+    "Gheida Abdala Omar": "gheida-abdala-omar",
+    "Fiona Nuwamanya": "fiona-nuwamanya",
+    "Kanga Rasi": "kanga-rasi",
+    "Jackline Waweru Wanjiru": "jackline-waweru-wanjiru",
+    "Nancy Moraa Okemwa": "nancy-moraa-okemwa",
+}

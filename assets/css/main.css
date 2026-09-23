@@ -1739,6 +1739,34 @@ body.nav-open { overflow: hidden; }
 .speaker__name { font-family: var(--serif); font-size: clamp(1.35rem, 2.2vw, 1.9rem); font-weight: 400; letter-spacing: -0.022em; }
 .speaker__role { margin-top: 0.5rem; font-size: 0.875rem; color: var(--amber-deep); font-weight: 600; line-height: 1.45; }
 
+/* Speaker portraits, cropped from the event's announcement cards. Round,
+   because the cards framed them in circles and a square crop of a circular
+   frame shows its corners. object-fit keeps faces from stretching at any
+   size; the source files are already square, so it never has to crop. */
+.speaker__pic {
+  width: clamp(92px, 12vw, 132px);
+  aspect-ratio: 1;
+  margin-bottom: 1.1rem;
+  border-radius: 50%;
+  overflow: hidden;
+  background: var(--stone);
+}
+.speaker__pic img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+.person__pic {
+  width: 64px;
+  aspect-ratio: 1;
+  margin-bottom: 0.85rem;
+  border-radius: 50%;
+  overflow: hidden;
+  background: var(--stone);
+}
+.person__pic img { width: 100%; height: 100%; object-fit: cover; display: block; }
+/* Two people have no portrait. Rather than invent a placeholder initial,
+   their card reserves the same space, so every name in a row still sits on
+   one line. */
+.person:not(.person--pic) { padding-top: calc(clamp(1.1rem, 2.2vw, 1.5rem) + 64px + 0.85rem); }
+
 /* A long biography, collapsed to its opening lines with a fade and a
    toggle. The clamp is applied by JavaScript, not here: without it the text
    would be cut off with no way to open it. main.js also retires the button

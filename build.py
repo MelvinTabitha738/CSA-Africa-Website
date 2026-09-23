@@ -397,7 +397,7 @@ def gallery_block(year, count, label):
             y=year, i=i, n=count,
             w=dims("gallery/thumb/csa%s-%02d" % (year, i))[0],
             h=dims("gallery/thumb/csa%s-%02d" % (year, i))[1],
-            alt=H.escape("%s — photograph %d" % (label, i), quote=True))
+            alt=H.escape("%s, photograph %d" % (label, i), quote=True))
         for i in range(1, count + 1))
     return ('<div class="gallery" data-gallery>%s</div>' % shots)
 
@@ -513,7 +513,7 @@ def home():
           Initiative and <a class="ilink" href="{swahilipot}" target="_blank" rel="noopener">Swahilipot
           Hub Foundation</a>.</p>
         <p class="lead" data-reveal style="max-width:48ch">Four days in Mombasa, Kenya. Sixty
-          places, eighteen speakers, and no coding required &#8212; only the courage to challenge
+          places, eighteen speakers, and no coding required. Only the courage to challenge
           what you believe is possible.</p>
         <ul class="detail-list" data-reveal style="margin-top:2.25rem;max-width:34rem">
           <li><span class="k">Dates</span><span class="v">{dates}</span></li>
@@ -567,7 +567,7 @@ def home():
         <h2 class="h2">The barrier was never only the code</h2>
       </div>
       <p class="lead" data-reveal>We remove the practical and psychological obstacles that keep
-        talented people out of the room &#8212; so the learning can actually land.</p>
+        talented people out of the room, so the learning can actually land.</p>
     </div>
     <ul class="numlist numlist--2" data-reveal-group>{diffs}</ul>
   </div>
@@ -625,7 +625,7 @@ def home():
         <h2 class="h2">Every edition, in its own place</h2>
       </div>
       <p class="lead" data-reveal>Ibadan, Kigali, online through the pandemic, Lagos,
-        Nairobi &#8212; five cohorts since 2018.</p>
+        Nairobi. Five cohorts since 2018.</p>
     </div>
     <div class="card-grid card-grid--editions" data-reveal-group>{editions}</div>
   </div>
@@ -640,7 +640,7 @@ def home():
         <p class="eyebrow">Our testimonials</p>
         <h2 class="h2" id="testimonials-h">What changed, in their words</h2>
       </div>
-      <p class="lead" data-reveal>Fourteen participants, in their own words &#8212; on what the
+      <p class="lead" data-reveal>Fourteen participants, in their own words, on what the
         three weeks changed for them.</p>
     </div>
 
@@ -955,7 +955,7 @@ def team():
         <p class="eyebrow">Volunteers</p>
         <h2 class="h2">Our Past Workshop Volunteers</h2>
       </div>
-      <p class="lead" data-reveal>Instructors, tutors and media volunteers from 2018 through 2025 &#8212;
+      <p class="lead" data-reveal>Instructors, tutors and media volunteers from 2018 through 2025,
         several of them CSA alumni who came back to teach.</p>
     </div>
     <div class="rail-head" data-reveal>
@@ -1096,15 +1096,24 @@ def inuka_panels():
     return "".join(out)
 
 
+def portrait(name, cls):
+    """A speaker's portrait, cropped from the event's announcement cards. Not
+    everyone has one, so callers get an empty string rather than a gap."""
+    slug = D.INUKA_PHOTOS.get(name)
+    if not slug:
+        return ""
+    return '<div class="%s">%s</div>' % (cls, img("people/inuka-%s" % slug, name, sizes="140px"))
+
+
 def inuka_people(sessions):
     """Full bio cards, for the organisers and the featured speaker."""
     return "".join(
-        '<article class="speaker" data-reveal><div><h3 class="speaker__name">{n}</h3>'
+        '<article class="speaker" data-reveal><div>{pic}<h3 class="speaker__name">{n}</h3>'
         '<p class="speaker__role">{r}</p>{link}</div>'
         '<div class="bio" data-bio><p class="bio__text">{b}</p>'
         '<button class="bio__more" type="button" aria-expanded="false">Read more</button>'
         '</div></article>'.format(
-            n=esc(n), r=r, b=b,
+            n=esc(n), r=r, b=b, pic=portrait(n, "speaker__pic"),
             link=('<p style="margin-top:1rem"><a class="tlink" href="%s" target="_blank" '
                   'rel="noopener">Visit website %s</a></p>' % (u, ARW)) if u else "")
         for n, r, b, sess, u in D.INUKA_PEOPLE if sess in sessions)
@@ -1119,10 +1128,12 @@ def inuka_roster(sessions):
     Nothing is cut: choosing which half of someone's bio to show would mean
     editing their words, so the disclosure shows all of it or none."""
     return "".join(
-        '<article class="person" data-reveal>'
+        '<article class="person{pc}" data-reveal>{pic}'
         '<h3 class="person__name">{n}</h3><p class="person__role">{r}</p>{more}'
         '</article>'.format(
             n=esc(n), r=r,
+            pic=portrait(n, "person__pic"),
+            pc=" person--pic" if n in D.INUKA_PHOTOS else "",
             # Not everyone supplied a biography. They still led a session, so
             # they still get a card - it simply carries no disclosure.
             more=('<details class="person__more"><summary>Biography</summary>'
@@ -1200,7 +1211,7 @@ def inuka():
         <h2 class="h2" style="max-width:16ch">Two panels, six voices</h2>
       </div>
       <p class="lead" data-reveal>Both panels were moderated by CSA Africa alumni from the
-        2025 cohort &#8212; participants a year earlier, holding the microphone this time.</p>
+        2025 cohort. Participants a year earlier, holding the microphone this time.</p>
     </div>
     <div class="panels" data-reveal-group>{panels}</div>
   </div>
@@ -1214,7 +1225,7 @@ def inuka():
         <h2 class="h2">People who have walked it</h2>
       </div>
       <p class="lead" data-reveal>The two minds behind INUKA, one from each side of the
-        partnership &#8212; CSA Africa and the NAA&#8217;M Initiative &#8212; and both of them
+        partnership, CSA Africa and the NAA&#8217;M Initiative, and both of them
         proof of the thing the event set out to argue.</p>
     </div>
     {organisers}
