@@ -392,7 +392,8 @@ ALUMNI_FILMS = [
 # ---------------------------------------------------------------- INUKA
 INUKA = {
     "title": "INUKA Mombasa",
-    "tagline": "A mindset transformation experience.",
+    # The event's own line, from the printed programme booklet.
+    "tagline": "Believe. See. Build. Rise.",
     "partners": "In partnership with NAA’M Initiative and Swahilipot Hub Foundation",
     "venue": "Swahilipot Hub Foundation, Mombasa",
     "dates": "10 - 13 September (4 days)",
@@ -467,7 +468,6 @@ INUKA = {
 # here is paraphrased or invented.
 INUKA_2026 = {
     "held": "10 &#8211; 13 September 2026",
-    "motto": "Believe. See. Build. Rise.",
 }
 
 # (name, role, bio, session)

@@ -1296,7 +1296,7 @@ def inuka():
         img2=img("story/cohort", "A CSA Africa cohort together at the end of the workshop"),
         cta=cta_band())
 
-    return page("inuka-mombasa.html", "INUKA Mombasa — a mindset transformation experience",
+    return page("inuka-mombasa.html", "INUKA Mombasa 2026 — Believe. See. Build. Rise.",
                 "CSA Africa's first mindset transformation event, in partnership with NAA'M "
                 "Initiative and Swahilipot Hub Foundation. 10-13 September, Mombasa, Kenya. Free to "
                 "attend, no coding required.", body, "inuka", og_image="story/inuka-hero")
