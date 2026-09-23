@@ -1279,8 +1279,8 @@ def inuka():
         organisers=organisers, roster=roster, roster_n=roster_n,
         rcontrols=rail_controls("speakers"),
         panels=panels, also=esc(I["also"]),
-        img1=img("story/inuka-speaking-up", "An INUKA Mombasa participant speaking into a microphone among her peers"),
-        img2=img("story/inuka-connections", "INUKA Mombasa participants talking and laughing together"),
+        img1=img("story/inuka-connections", "INUKA Mombasa participants talking and laughing together"),
+        img2=img("story/inuka-hero", "The INUKA Mombasa cohort outside Swahilipot Hub, Mombasa"),
         cta=cta_band())
 
     return page("inuka-mombasa.html", "INUKA Mombasa 2026 — Believe. See. Build. Rise.",
