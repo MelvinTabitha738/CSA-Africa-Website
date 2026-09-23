@@ -110,6 +110,12 @@ def deadline_note():
 
 
 def announce():
+    """The promo strip that used to sit above the header. Not rendered: one
+    navy strip above the nav is enough, and the topbar has that slot now.
+
+    Kept because a future call for applications is the case it exists for.
+    To bring it back, past-tense the copy below and restore {announce}
+    between {topbar} and {header} in page()."""
     return (
         '<div class="announce"><div class="shell--wide"><div class="announce__in">'
         '<span><b>INUKA Mombasa</b></span><span class="dot"></span>'
@@ -222,6 +228,17 @@ def socials_html():
     )
 
 
+def topbar():
+    """Social links above the header, site-wide. The only strip up there.
+
+    Deliberately not sticky: .site-header is, and a second strip riding down
+    the screen would eat the thumb zone for links you follow once."""
+    return ('<div class="topbar"><div class="shell--wide"><div class="topbar__in">'
+            '<span class="topbar__tag">Follow CSA Africa</span>'
+            '<div class="socials socials--sm">%s</div>'
+            '</div></div></div>' % socials_html())
+
+
 def footer():
     prog = "".join('<li><a href="%s.html">CSA Africa %s</a></li>' % (s, y) for y, s, _ in EDITION_NAV)
     return """<footer class="site-footer">
@@ -310,7 +327,7 @@ def page(filename, title, description, body, active, og_image="story/csa2025-gro
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
-{announce}
+{topbar}
 {header}
 <main id="main">
 {body}
@@ -322,7 +339,7 @@ def page(filename, title, description, body, active, og_image="story/csa2025-gro
 """.format(
         title=H.escape(title, quote=True), desc=H.escape(description, quote=True),
         site=SITE, fn=filename, org=D.ORG, og=og_image,
-        announce="" if active == "inuka" else announce(),
+        topbar=topbar(),
         header=header(active), body=body, footer=footer(),
     )
     with open(os.path.join(ROOT, filename), "w", encoding="utf-8") as f:

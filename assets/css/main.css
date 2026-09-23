@@ -314,6 +314,49 @@ hr { border: 0; border-top: 1px solid var(--line); margin: 0; }
 .ilink:hover { background: rgba(251, 145, 6, 0.16); }
 
 /* ---------------------------------------------------------------- 6. header */
+/* Social strip above the header. Not sticky - see topbar() in build.py. */
+.topbar {
+  background: var(--navy-deep);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+.topbar__in {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 1rem;
+  min-height: 38px;
+}
+.topbar__tag {
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--on-dark-2);
+}
+.socials--sm a {
+  width: 28px;
+  height: 28px;
+  border-color: rgba(255, 255, 255, 0.18);
+  color: var(--on-dark-2);
+}
+/* The footer's navy-on-paper hover would vanish here, so invert it. */
+.socials--sm a:hover {
+  background: var(--amber);
+  border-color: var(--amber);
+  color: var(--navy-deep);
+  transform: none;
+}
+.socials--sm svg { width: 14px; height: 14px; }
+@media (max-width: 760px) {
+  .topbar__in { justify-content: center; min-height: 44px; }
+  .topbar__tag { display: none; }
+  /* 28px clears WCAG 2.5.8 but is a mean tap target. On a phone the strip
+     holds nothing else, so the icons take the room: 6 x 36 + gaps = 246px,
+     inside the 280px a 320px screen leaves after gutters. */
+  .socials--sm a { width: 36px; height: 36px; }
+  .socials--sm svg { width: 16px; height: 16px; }
+}
+
 .announce {
   position: relative;
   z-index: 101;
@@ -1739,7 +1782,7 @@ body.nav-open { overflow: hidden; }
 
 /* ---------------------------------------------------------------- 24. print */
 @media print {
-  .site-header, .announce, .drawer, .cta-band, .socials, .rail-controls { display: none !important; }
+  .site-header, .topbar, .announce, .drawer, .cta-band, .socials, .rail-controls { display: none !important; }
   body { background: #fff; color: #000; }
   .hero, .phero { color: #000; min-height: auto; }
   .hero__media, .phero__media, .hero__scrim, .phero__scrim, .hero__motion { display: none; }
