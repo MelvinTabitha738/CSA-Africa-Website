@@ -457,3 +457,356 @@ INUKA = {
         "All we ask is your full presence for four days, no exceptions.",
     ],
 }
+
+# ------------------------------------------------- INUKA Mombasa 2026 edition
+# The event as it happened, 10-13 September 2026. Kept separate from INUKA
+# above, which holds the programme-level copy, so a future edition can be
+# announced without disturbing this record.
+#
+# Bios are the organisers' own, from the printed programme booklet. Nothing
+# here is paraphrased or invented.
+INUKA_2026 = {
+    "held": "10 &#8211; 13 September 2026",
+    "motto": "Believe. See. Build. Rise.",
+}
+
+# (name, role, bio, session)
+# session: "mc" | "featured" | "panel-1" | "panel-2" | None
+# None means they led a session on days 3-4 that is not yet documented here.
+INUKA_PEOPLE = [
+    ("Maham Hussein",
+     "Communications and Public Affairs Professional",
+     "Maham Hussein is a Communications and Public Affairs professional working at the "
+     "intersection of strategic communication, international relations and social impact. Her "
+     "experience spans institutional storytelling, executive communications, public engagement "
+     "and navigating diverse stakeholder spaces across Kenya and Africa. She is particularly "
+     "interested in how African institutions tell their own stories, how young people participate "
+     "in shaping the continent’s future, and how meaningful conversations can become meaningful "
+     "action. When she is not behind the communications strategy, Maham enjoys bringing people, "
+     "ideas and energy together (both on and off the stage).",
+     "mc"),
+
+    ("Dr Sofiat Olaosebikan",
+     "Founder, CSA Africa &#183; Computing Science Lecturer, University of Glasgow",
+     "Dr Sofiat Olaosebikan is a Computing Science lecturer at the University of Glasgow and the "
+     "Founder of CSA Africa, an initiative focused on expanding access to technology, computing "
+     "education and practical digital skills for young Africans. Through CSA Africa, she has "
+     "supported the training of more than 700 young Africans across 13 countries, helping "
+     "participants build confidence, technical capability and pathways into technology and "
+     "innovation. Her own journey into computing was shaped by persistence after repeated "
+     "rejection from Computing Science, an experience that now informs her commitment to helping "
+     "young people see beyond their circumstances, reframe setbacks and recognise the "
+     "possibilities available to them. She is also an Elevate Africa Fellow and is passionate "
+     "about technology, education, mentorship and creating practical opportunities for Africa’s "
+     "next generation.",
+     "featured"),
+
+    ("Dr Swalhah Yusuf, OGW",
+     "Deputy Director, Election Operations, Mombasa County &#183; Electoral Management Professional",
+     "Dr Swalhah Yusuf, OGW is an electoral management professional with over 14 years of "
+     "experience in election operations. She currently serves as the Deputy Director, Election "
+     "Operations in Mombasa County, where she oversees the planning and implementation of "
+     "electoral activities. She holds a PhD in Business Management, a Master of Business "
+     "Administration (Finance), a Bachelor of Commerce (Finance), and is a Certified Public "
+     "Accountant of Kenya (CPA-K). Her expertise spans strategic leadership, financial "
+     "management, governance, electoral administration and institutional service delivery. "
+     "Through her leadership, IEBC has consistently been ranked as the best Independent "
+     "Commission at international exhibitions in Mombasa. Dr Yusuf is committed to professional "
+     "excellence, institutional integrity, effective service delivery and credible electoral "
+     "processes. Her contribution to public service has been recognised through the Order of the "
+     "Grand Warrior (OGW) award.",
+     "featured"),
+
+    ("Melvine Tabitha Opondo",
+     "Computer Science Student &#183; Technologist &#183; CSA Africa Alumna",
+     "Melvine Tabitha Opondo is a Computer Science student, technologist and CSA Africa alumna "
+     "whose journey is defined by resilience, courage and learning to create opportunities from "
+     "where she is. She began university with almost no prior exposure to computers and initially "
+     "struggled with feelings of being behind and not belonging in technology. Through "
+     "persistence, mentorship and her experience with CSA Africa, she developed skills in "
+     "software development while gaining the confidence to approach challenges as things she "
+     "could learn rather than limitations on what she could become. Today, Melvine builds "
+     "software, works collaboratively on projects and uses her skills to identify problems and "
+     "create practical solutions. Her story reflects a belief that lack of exposure is not lack "
+     "of ability, and that young people can begin building meaningful opportunities with what "
+     "they already have.",
+     "panel-1"),
+
+    ("Aseef Akram",
+     "Employer Engagement Associate, Global Opportunity Youth Network &#183; Youth &amp; Sports "
+     "Development Leader",
+     "Aseef Akram is an Employer Engagement Associate at the Global Opportunity Youth Network "
+     "(GOYN), working at the intersection of youth employment, skills development and opportunity "
+     "creation. He helps bridge the gap between emerging talent and the evolving workforce by "
+     "preparing young people for placement, retention and entrepreneurship, while supporting "
+     "employers to better recognise and value youth potential. Beyond his work in youth "
+     "employment, Aseef serves as Chairman of Blue Ocean Swimming Club and Technical Director at "
+     "the Mombasa County Swimming Association, where he supports youth leadership, talent "
+     "development and pathways in sport. His work is driven by a commitment to helping young "
+     "people access meaningful opportunities, develop their potential and build sustainable "
+     "pathways for growth.",
+     "panel-1"),
+
+    ("Fatuma Ali",
+     "Founder &amp; CEO, Sulha Afrika &#183; Social Entrepreneur &amp; Engineer",
+     "Fatuma Ali is an award-winning social entrepreneur, petroleum and natural gas engineer, and "
+     "the Founder &amp; CEO of Sulha Afrika, a regenerative materials company developing "
+     "mangrove-based biomaterials to transform the leather industry through Indigenous African "
+     "knowledge and circular innovation. She founded Sulha Afrika with just USD 300, growing it "
+     "from a sustainable leather brand into a pioneering venture advancing nature-based "
+     "alternatives to chromium tanning. Her work focuses on developing mangrove-derived "
+     "bio-tannins, while creating economic opportunities for women and youth and supporting "
+     "ecosystem restoration through regenerative value chains. Fatuma’s work has received "
+     "international recognition, including the African Development Bank Fashionomics Africa "
+     "Award, the African Union Commission and UNDP Blue Economy Innovation Award, and the EU "
+     "BlueInvest Africa Award. She has also presented research on Indigenous African leather "
+     "practices at the 126th Society of Leather Technologists and Chemists Annual Conference in "
+     "the United Kingdom. Her vision is to position Africa as a global leader in regenerative "
+     "material innovation, transforming Indigenous knowledge into scalable climate technologies "
+     "that restore biodiversity, strengthen local economies and redefine sustainable "
+     "manufacturing.",
+     "panel-1"),
+
+    ("Haytam Isse Abdullahi",
+     "Founder &amp; Executive Director, Future Pillars Organization &#183; Founder, Guiding the "
+     "Lights Leadership Academy",
+     "Haytam Isse Abdullahi is a youth leader and social-impact practitioner focused on "
+     "leadership development, community empowerment and good governance. He is the Founder and "
+     "Executive Director of Future Pillars Organization, a Mombasa-based youth-led organisation, "
+     "and the Founder of the Guiding the Lights Leadership Academy, which develops young leaders "
+     "through values-based leadership, civic responsibility, integrity and personal development. "
+     "His work spans youth mentorship, education, community initiatives and leadership "
+     "development, creating platforms that enable young people to lead and contribute "
+     "meaningfully to society.",
+     "panel-1"),
+
+    ("Kauthar Mohamed",
+     "Student Leadership Development Manager &#183; Leadership Architect &amp; Sustainable "
+     "Service-Learning Practitioner",
+     "Kauthar Mohamed is a youth leadership and education practitioner with over a decade of "
+     "experience empowering young people to discover their potential, develop their voice and "
+     "turn ideas into meaningful action. As Student Leadership Development Manager at Aga Khan "
+     "Academy Mombasa, she leads programmes spanning Service Learning and Community-Based Service "
+     "Learning, youth leadership, internships and experiential learning, creating opportunities "
+     "for young people to connect learning with purpose, possibility and impact. An International "
+     "Baccalaureate alumna herself, Kauthar brings both personal and professional insight into "
+     "the transformative power of education and the importance of creating spaces where young "
+     "people can see possibilities beyond their immediate circumstances. Passionate about "
+     "holistic youth empowerment, authentic leadership and creating pathways to opportunity, "
+     "Kauthar is particularly interested in helping young people recognise their value, "
+     "communicate their strengths and have the confidence to take up space. Born and raised in "
+     "Mombasa, she remains deeply committed to creating opportunities for young people in her "
+     "community and beyond. Her personal philosophy, &#8220;Inspire to Empower,&#8221; reflects "
+     "her belief that when people are given the confidence, tools and opportunities to see what "
+     "is possible, they can begin to build it.",
+     "panel-2"),
+
+    ("Edwin Njuga",
+     "Development Professional &#183; Youth Empowerment &amp; Enterprise Development Specialist",
+     "Edwin Njuga is a development professional with over 20 years of experience across the NGO "
+     "and public sectors, including World Vision Kenya, the Department of Children Services, and "
+     "the Coast Water Works Development Agency. He has 15 years of experience in youth "
+     "empowerment, monitoring and evaluation, enterprise development, and programme coordination. "
+     "He has worked with the Youth Enterprise Development Fund (YEDF) in various capacities, "
+     "including Monitoring &amp; Evaluation Officer, Regional Coordinator, and County "
+     "Coordinator. Throughout his career, he has supported youth-focused programmes, coordinated "
+     "field operations, monitored programme performance, facilitated enterprise development "
+     "initiatives, and provided technical support to young people and Micro, Small and Medium "
+     "Enterprises (MSMEs). Edwin holds a Master’s Degree in Sociology (Rural Sociology and "
+     "Community Development), a Bachelor’s Degree in Sociology, and a Diploma in Project Planning "
+     "and Management. He is passionate about youth empowerment, entrepreneurship development, and "
+     "creating sustainable opportunities for young people.",
+     "panel-2"),
+
+    ("Abdulkadir Aweis (Dadir)",
+     "Founder, Siewa Media Agency &amp; Siewa Network &#183; Creative Entrepreneur",
+     "Abdulkadir Aweis, also known as Dadir, is a creative entrepreneur and the Founder of Siewa "
+     "Media Agency and Siewa Network. Through Siewa Media, he works across digital storytelling, "
+     "creative media, marketing and strategic communication, helping brands and organisations "
+     "strengthen their digital presence, engage relevant audiences and communicate their value "
+     "clearly. Siewa Network brings together changemakers, ideas and opportunities across the "
+     "creative, business and community sectors, creating a platform for collaboration around "
+     "youth empowerment, education, community development and social impact. With over six years "
+     "of experience in digital communication and creative work, Dadir has worked with "
+     "organisations, businesses, creators and community-led initiatives to build partnerships, "
+     "amplify humanitarian campaigns, empower communities and mobilise people and resources "
+     "around shared objectives. He is driven by a belief in the power of people, ideas and "
+     "meaningful connections to open doors and create new possibilities.",
+     "panel-2"),
+
+    # Led sessions on days 3-4. Session details not yet supplied, so they carry
+    # no session key and render under the general speaker roster.
+    ("Nadia Abdalla",
+     "Founder &amp; Executive Director, NAA’M Initiative &#183; Governance, Public Affairs &amp; "
+     "Political Advisor &#183; Author",
+     "Nadia Abdalla is a Pan-African governance and leadership practitioner, speaker, author, and "
+     "the Founder and Executive Director of the NAA’M Initiative &#8212; a platform advancing "
+     "mindset transformation, civic participation, future skills and economic empowerment among "
+     "women and young people. She previously served as Chief Administrative Secretary (Deputy "
+     "Minister) in Kenya’s Ministry of ICT, Innovation and Youth Affairs, a deputy "
+     "minister-level government position to which she was appointed at the age of 29. During her "
+     "tenure, she advised senior government leadership and championed national initiatives in "
+     "youth development, employment, innovation, digital skills and public participation. Nadia "
+     "brings experience spanning government, public policy, strategic partnerships, philanthropy, "
+     "civil society, international development and the private sector. Her facilitation approach "
+     "combines personal storytelling, guided reflection, practical tools and action-based "
+     "learning, enabling participants to connect leadership concepts with their everyday "
+     "realities. She facilitates sessions on mindset transformation, authentic leadership, civic "
+     "responsibility, personal positioning, strategic communication, women and youth leadership, "
+     "and navigating personal and professional transitions. Nadia is a three-time author. Through "
+     "her work, she equips participants to challenge limiting beliefs, recognise their agency, "
+     "communicate their value and take courageous action toward building meaningful futures and "
+     "transforming their communities.",
+     None),
+
+    ("Dr Hafidha Ahmed",
+     "Mental Health Specialist &amp; Community Developer",
+     "Dr Hafidha Ahmed is a Mental Health Specialist and Community Developer who supports "
+     "individuals in realising their full potential through accessible mental health support and "
+     "comprehensive personal development programmes. With extensive experience in the contact "
+     "centre industry, she has developed strong skills in leadership, communication and training, "
+     "which continue to shape her impact-driven work. She is deeply committed to community "
+     "service, public speaking and creating safe spaces that encourage growth, healing and "
+     "empowerment. Through CSR and community-centred initiatives, including work around GBV, "
+     "SRHR and HIV/AIDS, Hafidha works to make mental health tools, wellness conversations and "
+     "personal development resources more accessible to everyday communities.",
+     None),
+
+    ("Hon. Patrick Mbelle",
+     "MCA, Bamburi Ward &#183; Founder &amp; Patron, The Mbelle Initiative",
+     "Hon. Patrick Mbelle is the Member of County Assembly for Bamburi Ward and a community "
+     "leader focused on youth development, skills-building and grassroots empowerment. He is the "
+     "Founder and Patron of The Mbelle Initiative, as well as the Bamburi Skills Development "
+     "Center, Mjini Shamba Community Enterprise, and Mentors of the Seas Centre. Through these "
+     "initiatives, he supports young people and communities through practical skills development, "
+     "enterprise, mentorship and locally driven opportunities for growth.",
+     None),
+
+    ("Gheida Abdala Omar",
+     "Founder, Girls I Save Africa (GiSave) &#183; STEM Education Advocate &amp; Innovator",
+     "Gheida Abdala Omar is a Kenyan STEM education advocate, innovator, and the Founder of Girls "
+     "I Save Africa (GiSave), a youth-led organisation empowering young people, especially girls, "
+     "through STEM education, digital skills and innovation. She is a recipient of the "
+     "Presidential Innovation Award 2025, Young Scientists Kenya Winner 2021, the Innovation for "
+     "Social Change Award, and the Pwani Women Golden Awards Rising Star 2023. In 2025, she was a "
+     "Microsoft Imagine Cup Finalist and received the Global Internet Award at the World Internet "
+     "Conference in China. In 2026, Gheida was recognised with the Women in STEM Award Kenya and "
+     "completed the U.S. State Department-supported Community Engagement Exchange Program at "
+     "Arizona State University. She also serves as an ITU Generation Connect Youth Envoy, Ban "
+     "Ki-moon Foundation Scholar, Mastercard Foundation Alumni Committee Lead, and IFRC Global "
+     "Innovation Lead. Her work is driven by a commitment to helping young people use technology, "
+     "creativity and innovation to solve real community challenges and create meaningful impact.",
+     None),
+
+    ("Fiona Nuwamanya",
+     "Finance &amp; Management Professional &#183; Entrepreneur &#183; Co-Founder, Africa Centre "
+     "for Applied Digital Health",
+     "Fiona Nuwamanya is a finance and management professional who believes that most great ideas "
+     "do not fail for lack of ambition, but rather for lack of structure. Over the last 15+ "
+     "years, she has founded TWAM Synergies, a consultancy firm supporting SMEs, co-founded "
+     "Rocket Health, the first telemedicine company in Uganda, which scaled to over 1 million "
+     "patients and raised a $5 million Series A, and was recognised as Africa’s SME CFO of the "
+     "Year. She is now co-founder of the Africa Centre for Applied Digital Health (CADH), where "
+     "she is helping drive AI-powered digital health solutions and research across the continent. "
+     "Her mission is to help young founders build strong, sustainable businesses that last.",
+     None),
+
+    ("Kanga Rasi",
+     "Director of Campaigns &amp; Advocacy, Brave Movement &#183; Advocate of the High Court of Kenya",
+     "Kanga Rasi knew by age ten that she wanted to work protecting girls and women. She trained "
+     "as a lawyer in Kenya believing the law alone could protect children, before learning that "
+     "laws only change when people organise. That shift took her from courtrooms into campaigns "
+     "and, eventually, into some of the world’s most influential policy spaces. She is the "
+     "Director of Campaigns and Advocacy at Brave Movement, in partnership with Together for "
+     "Girls. Her work has included briefing G20 sherpas and negotiators, contributing to G20 and "
+     "G7 commitments on child online safety, and supporting a global coalition of more than 150 "
+     "organisations. Kanga has participated in WHO and UN sessions across Geneva, Vienna and New "
+     "York, as well as African Union negotiations in Addis Ababa. Closer to home, she has worked "
+     "with provincial government officials in Kenya to help translate global commitments into "
+     "practical priorities and budget lines. Her belief is simple and unwavering: those closest "
+     "to the pain should be closest to the power. She is an Advocate of the High Court of Kenya.",
+     None),
+
+    ("Jackline Waweru Wanjiru",
+     "Founder &amp; Team Lead, Leadership4Impact &#183; Youth Advocate",
+     "Jackline Waweru Wanjiru is a youth advocate and changemaker with over a decade of "
+     "experience in SRHR, gender equality, youth leadership and policy advocacy. She is the "
+     "Founder and Team Lead of Leadership4Impact, a Kilifi-based organisation mentoring young "
+     "leaders, and currently serves as Program Manager for the Student Education Fund at the "
+     "Community Health Promotion Fund. Her work has included national and county-level youth "
+     "advocacy through initiatives such as K-CAT, Y-ACT, Kenya Ni Mimi, and various Kilifi County "
+     "technical working groups, where she has contributed to youth, gender, SRHR, HIV and "
+     "anti-GBV policy development. Jackline is a YALI Cohort 11 alumna and was among the Top 12 "
+     "finalists in Kenya’s Ms President political leadership reality show. Her work is driven by "
+     "a commitment to creating spaces where young people can lead, thrive and shape the future.",
+     None),
+
+    ("Nancy Moraa Okemwa",
+     "Communications Lead, Swahilipot Hub Foundation &#183; Strategic Communicator &amp; Storyteller",
+     "Nancy Moraa Okemwa is a strategic communicator, storyteller and creative industry "
+     "enthusiast working across communications, media, digital storytelling, community engagement "
+     "and creative programming. As Communications Lead at Swahilipot Hub Foundation, she leads "
+     "communications across youth-focused programmes and media platforms, using storytelling and "
+     "creative expression to amplify voices and bring ideas to life. Nancy believes creativity is "
+     "more than talent. It is a tool for expression, influence, enterprise and social change. "
+     "Through her work, she supports young creatives to find their voice, understand their "
+     "audiences, build meaningful brands and transform creative ideas into sustainable "
+     "opportunities.",
+     None),
+]
+
+# The two documented panels. "themes" distils the moderator's question set for
+# each panellist into what the panel actually explored - the run sheet itself
+# stays internal. Days 3-4 are not yet documented.
+INUKA_PANELS = [
+    {
+        "day": "Day 1",
+        "n": "Panel 01",
+        "title": "Lead from Within",
+        "blurb": "Exploring self-awareness, resilience, values and purpose-driven leadership.",
+        "time": "11:40 &#8211; 12:45",
+        "moderator": ("Melvine Tabitha Opondo", "CSA Africa alumna 2025, Software Engineering track"),
+        "themes": [
+            ("Aseef Akram",
+             "Building trust across young people, employers and entrepreneurs; how to develop the "
+             "mindset to create opportunity rather than wait for it; the failure that shaped how "
+             "he leads today."),
+            ("Fatuma Ali",
+             "Beginning before you have the resources or the answers; how identity and personal "
+             "values shape the kind of leader you become; staying grounded in your original "
+             "purpose as recognition and pressure grow."),
+            ("Haytam Isse Abdullahi",
+             "What young people need to understand about themselves before they can lead others; "
+             "leading without a title, from within your family, school and community; holding on "
+             "to your values in environments that reward the opposite."),
+        ],
+        "closing": "In one sentence, what does &#8220;leading from within&#8221; mean to you, and "
+                   "what is one action every young person in this room can take today to begin "
+                   "that journey?",
+    },
+    {
+        "day": "Day 2",
+        "n": "Panel 02",
+        "title": "Positioning Yourself for Opportunities",
+        "blurb": "Recognising your own value, and learning how to put it in front of the right "
+                 "people.",
+        "time": "11:15 &#8211; 12:20",
+        "moderator": ("Pheny Mwaisaka", "CSA Africa alumna 2025, Data Science track"),
+        "themes": [
+            ("Kauthar Mohamed",
+             "Identifying your strengths and communicating them with confidence; what to do while "
+             "still in school or university to position yourself for what comes after; pursuing "
+             "an opportunity before you feel fully qualified."),
+            ("Edwin Njuga",
+             "What distinguishes the young people who successfully access opportunities; the "
+             "practical steps to funding, mentorship and partnership; the mistakes young people "
+             "and MSMEs make when applying, and what to do instead."),
+            ("Abdulkadir Aweis (Dadir)",
+             "Building a personal brand that reflects your skills, values and ambitions; building "
+             "genuine networks without making every interaction transactional; using creativity, "
+             "storytelling and collaboration to make your own opportunities."),
+        ],
+        "closing": "What is one thing every young person here can do within the next 30 days to "
+                   "position themselves for a meaningful opportunity?",
+    },
+]

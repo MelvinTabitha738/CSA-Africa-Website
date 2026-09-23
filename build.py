@@ -1101,19 +1101,52 @@ def news():
 
 
 # ------------------------------------------------------------------ inuka
+def inuka_panels():
+    """The documented panel sessions. The moderator's questions are distilled
+    into themes in build_data - the run sheet itself is not public."""
+    out = []
+    for p in D.INUKA_PANELS:
+        themes = "".join(
+            '<div class="panel__voice"><h4>{n}</h4><p>{t}</p></div>'.format(n=esc(n), t=esc(t))
+            for n, t in p["themes"])
+        out.append(
+            '<article class="panel" data-reveal>'
+            '<div class="panel__head">'
+            '<p class="panel__n">{day} &#183; {n}</p>'
+            '<h3 class="panel__title">{title}</h3>'
+            '<p class="panel__blurb">{blurb}</p>'
+            '<p class="panel__meta"><span>{time}</span><span>Moderated by {mod}</span>'
+            '<span class="panel__modrole">{modrole}</span></p>'
+            '</div>'
+            '<div class="panel__body">{themes}'
+            '<p class="panel__closing"><span>Closing question</span>{closing}</p>'
+            '</div></article>'.format(
+                day=p["day"], n=p["n"], title=esc(p["title"]), blurb=esc(p["blurb"]),
+                time=p["time"], mod=esc(p["moderator"][0]), modrole=esc(p["moderator"][1]),
+                themes=themes, closing=p["closing"]))
+    return "".join(out)
+
+
+def inuka_people(sessions, cls=""):
+    """Bio cards for the people in the given session buckets."""
+    return "".join(
+        '<article class="speaker{c}" data-reveal><div><h3 class="speaker__name">{n}</h3>'
+        '<p class="speaker__role">{r}</p></div><div><p>{b}</p></div></article>'.format(
+            c=(" " + cls) if cls else "", n=esc(n), r=r, b=b)
+        for n, r, b, sess in D.INUKA_PEOPLE if sess in sessions)
+
+
 def inuka():
     I = D.INUKA
     why = "".join('<p>%s</p>' % esc(p) for p in I["why"])
     beyond = "".join('<p>%s</p>' % esc(p) for p in I["beyond"])
     walk = "".join('<li>%s</li>' % esc(t) for t in I["walkaway"])
     wait = "".join('<li>%s</li>' % esc(t) for t in I["wait"])
-    speakers = "".join(
-        '<article class="speaker" data-reveal><div><h3 class="speaker__name">{n}</h3>'
-        '<p class="speaker__role">{r}</p>{link}</div><div><p>{b}</p></div></article>'.format(
-            n=esc(n), r=esc(r), b=esc(b),
-            link='<p style="margin-top:1rem"><a class="tlink" href="%s" target="_blank" '
-                 'rel="noopener">Visit website %s</a></p>' % (u, ARW) if u else "")
-        for n, r, b, u in I["speakers"])
+    featured = inuka_people(("featured",))
+    hosts = inuka_people(("mc",), "speaker--sm")
+    panellists = inuka_people(("panel-1", "panel-2"), "speaker--sm")
+    others = inuka_people((None,), "speaker--sm")
+    panels = inuka_panels()
 
     body = """
 <section class="phero" style="min-height:clamp(460px,72vh,720px)">
@@ -1179,12 +1212,52 @@ def inuka():
   <div class="shell--wide">
     <div class="sec-head sec-head--split">
       <div data-reveal>
-        <p class="eyebrow">Who you&#8217;ll learn from</p>
+        <p class="eyebrow">Who they heard from</p>
         <h2 class="h2">People who have walked it</h2>
       </div>
     </div>
-    {speakers}
+    {featured}
     <p class="lead" data-reveal style="margin-top:2.5rem;max-width:70ch">{also}</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="shell--wide">
+    <div class="sec-head sec-head--split">
+      <div data-reveal>
+        <p class="eyebrow">In the room</p>
+        <h2 class="h2" style="max-width:16ch">Two panels, six voices</h2>
+      </div>
+      <p class="lead" data-reveal>Both panels were moderated by CSA Africa alumni from the
+        2025 cohort &#8212; participants two years ago, holding the microphone this time.</p>
+    </div>
+    <div class="panels" data-reveal-group>{panels}</div>
+  </div>
+</section>
+
+<section class="section band-stone">
+  <div class="shell--wide">
+    <div class="sec-head sec-head--split">
+      <div data-reveal>
+        <p class="eyebrow">Host</p>
+        <h2 class="h2">Master of ceremonies</h2>
+      </div>
+    </div>
+    {hosts}
+    <div class="sec-head sec-head--split" style="margin-top:clamp(3rem,6vw,5rem)">
+      <div data-reveal>
+        <p class="eyebrow">Panellists</p>
+        <h2 class="h2">The six who sat on the panels</h2>
+      </div>
+    </div>
+    {panellists}
+    <div class="sec-head sec-head--split" style="margin-top:clamp(3rem,6vw,5rem)">
+      <div data-reveal>
+        <p class="eyebrow">Speakers and facilitators</p>
+        <h2 class="h2" style="max-width:18ch">Who else led sessions across the four days</h2>
+      </div>
+    </div>
+    {others}
   </div>
 </section>
 
@@ -1214,7 +1287,9 @@ def inuka():
         wait_eyebrow="Why you shouldn&#8217;t wait" if APPLY_OPEN else "Places and selection",
         inuka_cta=apply_btn("btn--amber", dark=True),
         inuka_cta_light=apply_btn("btn--amber"), arw=ARW,
-        why=why, beyond=beyond, walk=walk, wait=wait, speakers=speakers,
+        why=why, beyond=beyond, walk=walk, wait=wait,
+        featured=featured, hosts=hosts, panellists=panellists,
+        others=others, panels=panels,
         note=esc(I["walkaway_note"]), also=esc(I["also"]),
         swahilipot=D.LINKS["swahilipot"],
         img1=img("story/peer-learning", "CSA Africa participants working side by side"),
