@@ -406,9 +406,10 @@ INUKA = {
     # from the programme, eighteen from INUKA_PEOPLE, sixty from the published
     # cap. Attendance and application numbers are not yet known, so they are
     # not guessed at.
+    # The speaker count is inserted by build.py from INUKA_PEOPLE, so it cannot
+    # drift from the roster the page actually renders.
     "stats": [
         ("4", "Days in Mombasa"),
-        ("18", "Speakers, panellists and facilitators"),
         ("2", "Panel sessions"),
         ("60", "Places, half reserved for women"),
     ],
@@ -626,6 +627,11 @@ INUKA_PEOPLE = [
      "amplify humanitarian campaigns, empower communities and mobilise people and resources "
      "around shared objectives. He is driven by a belief in the power of people, ideas and "
      "meaningful connections to open doors and create new possibilities.",
+     "panel-2", None),
+
+    ("Pheny Mwaisaka",
+     "CSA Africa Alumna 2025, Data Science track &#183; Moderator, Panel 2",
+     None,
      "panel-2", None),
 
     # Led sessions on days 3-4. Session details not yet supplied, so they carry

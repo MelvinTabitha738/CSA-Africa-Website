@@ -1117,9 +1117,13 @@ def inuka_roster(sessions):
     editing their words, so the disclosure shows all of it or none."""
     return "".join(
         '<article class="person" data-reveal>'
-        '<h3 class="person__name">{n}</h3><p class="person__role">{r}</p>'
-        '<details class="person__more"><summary>Biography</summary><p>{b}</p></details>'
-        '</article>'.format(n=esc(n), r=r, b=b)
+        '<h3 class="person__name">{n}</h3><p class="person__role">{r}</p>{more}'
+        '</article>'.format(
+            n=esc(n), r=r,
+            # Not everyone supplied a biography. They still led a session, so
+            # they still get a card - it simply carries no disclosure.
+            more=('<details class="person__more"><summary>Biography</summary>'
+                  '<p>%s</p></details>' % b) if b else "")
         for n, r, b, sess, _u in D.INUKA_PEOPLE if sess in sessions)
 
 
@@ -1131,8 +1135,15 @@ def inuka():
     featured = inuka_people(("featured",))
     roster = inuka_roster(("mc", "panel-1", "panel-2", None))
     panels = inuka_panels()
+    # Counted, not typed: these numbers described the roster wrongly the moment
+    # the roster changed under them.
+    n_people = len(D.INUKA_PEOPLE)
+    roster_n = sum(1 for *_, sess, _u in D.INUKA_PEOPLE
+                   if sess in ("mc", "panel-1", "panel-2", None))
+    stat_rows = list(I["stats"])
+    stat_rows.insert(1, (str(n_people), "Speakers, panellists and facilitators"))
     stats = "".join('<div class="stat" data-reveal><b>%s</b><span>%s</span></div>' % (v, esc(l))
-                    for v, l in I["stats"])
+                    for v, l in stat_rows)
     took = "".join('<li>%s</li>' % t for t in I["took_away"])
     facts = "".join('<li>%s</li>' % esc(t) for t in I["facts"])
 
@@ -1220,8 +1231,8 @@ def inuka():
         <p class="eyebrow">The full roster</p>
         <h2 class="h2" style="max-width:20ch">Everyone who led a session</h2>
       </div>
-      <p class="lead" data-reveal>Sixteen more speakers, panellists and facilitators across the
-        four days. Open any name to read their biography.</p>
+      <p class="lead" data-reveal>{roster_n} more speakers, panellists and facilitators across
+        the four days. Open any name to read their biography.</p>
     </div>
     <div class="people-grid" data-reveal-group>{roster}</div>
   </div>
@@ -1250,7 +1261,7 @@ def inuka():
         status=I["status"], partners=esc(I["partners"]), tagline=esc(I["tagline"]),
         dates=I["dates"], venue=esc(I["venue"]), stats=stats,
         why=why, beyond=beyond, took=took, facts=facts, note=esc(I["took_away_note"]),
-        organisers=organisers, featured=featured, roster=roster,
+        organisers=organisers, featured=featured, roster=roster, roster_n=roster_n,
         panels=panels, also=esc(I["also"]),
         img1=img("story/peer-learning", "INUKA Mombasa participants working side by side"),
         img2=img("story/cohort", "Participants together at the close of INUKA Mombasa"),
