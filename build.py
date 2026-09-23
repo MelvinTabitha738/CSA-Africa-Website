@@ -1132,7 +1132,6 @@ def inuka():
     why = "".join('<p>%s</p>' % esc(p) for p in I["why"])
     beyond = "".join('<p>%s</p>' % esc(p) for p in I["beyond"])
     organisers = inuka_people(("organiser",))
-    featured = inuka_people(("featured",))
     roster = inuka_roster(("mc", "panel-1", "panel-2", None))
     panels = inuka_panels()
     # Counted, not typed: these numbers described the roster wrongly the moment
@@ -1208,22 +1207,14 @@ def inuka():
   <div class="shell--wide">
     <div class="sec-head sec-head--split">
       <div data-reveal>
-        <p class="eyebrow">Whose idea this was</p>
-        <h2 class="h2" style="max-width:18ch">The two behind INUKA</h2>
-      </div>
-      <p class="lead" data-reveal>One from each side of the partnership &#8212; CSA Africa and
-        the NAA&#8217;M Initiative &#8212; and both of them proof of the thing the event
-        set out to argue.</p>
-    </div>
-    {organisers}
-
-    <div class="sec-head sec-head--split" style="margin-top:clamp(3.5rem,7vw,6rem)">
-      <div data-reveal>
         <p class="eyebrow">Who they heard from</p>
         <h2 class="h2">People who have walked it</h2>
       </div>
+      <p class="lead" data-reveal>The two minds behind INUKA, one from each side of the
+        partnership &#8212; CSA Africa and the NAA&#8217;M Initiative &#8212; and both of them
+        proof of the thing the event set out to argue.</p>
     </div>
-    {featured}
+    {organisers}
     <p class="lead" data-reveal style="margin-top:2.5rem;max-width:70ch">{also}</p>
 
     <div class="sec-head sec-head--split" style="margin-top:clamp(3.5rem,7vw,6rem)">
@@ -1261,7 +1252,7 @@ def inuka():
         status=I["status"], partners=esc(I["partners"]), tagline=esc(I["tagline"]),
         dates=I["dates"], venue=esc(I["venue"]), stats=stats,
         why=why, beyond=beyond, took=took, facts=facts, note=esc(I["took_away_note"]),
-        organisers=organisers, featured=featured, roster=roster, roster_n=roster_n,
+        organisers=organisers, roster=roster, roster_n=roster_n,
         panels=panels, also=esc(I["also"]),
         img1=img("story/peer-learning", "INUKA Mombasa participants working side by side"),
         img2=img("story/cohort", "Participants together at the close of INUKA Mombasa"),

@@ -464,8 +464,8 @@ INUKA_2026 = {
 }
 
 # (name, role, bio, session, url)
-# session: "organiser" | "mc" | "featured" | "panel-1" | "panel-2" | None
-#   organiser - the two whose idea INUKA was, one from each partner body
+# session: "organiser" | "mc" | "panel-1" | "panel-2" | None
+#   organiser - the two minds behind INUKA, one from each partner body
 #   None      - led a session on days 3-4 that is not yet documented here
 # url is a personal site, or None.
 INUKA_PEOPLE = [
@@ -510,7 +510,7 @@ INUKA_PEOPLE = [
      "excellence, institutional integrity, effective service delivery and credible electoral "
      "processes. Her contribution to public service has been recognised through the Order of the "
      "Grand Warrior (OGW) award.",
-     "featured", None),
+     None, None),
 
     ("Melvine Tabitha Opondo",
      "Computer Science Student &#183; Technologist &#183; CSA Africa Alumna",
