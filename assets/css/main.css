@@ -836,6 +836,16 @@ body.nav-open { overflow: hidden; }
     linear-gradient(180deg, rgba(8, 12, 44, 0.66) 0%, rgba(8, 12, 44, 0.42) 30%, rgba(8, 12, 44, 0.86) 72%, rgba(8, 12, 44, 0.95) 100%),
     linear-gradient(92deg, rgba(8, 12, 44, 0.78) 0%, rgba(8, 12, 44, 0.28) 55%, rgba(8, 12, 44, 0.05) 100%);
 }
+/* A lighter scrim for a hero whose subject is the people in it. The default
+   above crushes the INUKA group photo to a mean luminance of 0.015 - the
+   sixty faces the picture is about are barely there. This keeps white text
+   well clear of AA while letting the photograph read. */
+.phero--photo .phero__scrim {
+  background:
+    linear-gradient(180deg, rgba(8, 12, 44, 0.50) 0%, rgba(8, 12, 44, 0.16) 34%, rgba(8, 12, 44, 0.66) 74%, rgba(8, 12, 44, 0.88) 100%),
+    linear-gradient(92deg, rgba(8, 12, 44, 0.62) 0%, rgba(8, 12, 44, 0.18) 58%, rgba(8, 12, 44, 0.02) 100%);
+}
+
 .phero h1 { max-width: 18ch; text-wrap: balance; }
 .phero__sub { margin-top: 1.25rem; max-width: 58ch; color: rgba(255, 255, 255, 0.84); font-size: var(--fs-lead); }
 .phero .eyebrow { color: var(--amber); }
@@ -1881,10 +1891,13 @@ body.nav-open { overflow: hidden; }
   font-size: 0.6875rem;
   letter-spacing: 0.12em;
 }
-/* On a narrow hero the chip and the partner line fight for one short column,
-   so the chip takes its own line. */
+/* On a narrow hero the chip and the partner credit fight for one short
+   column. .eyebrow is a flex row, so the break has to come from the text
+   taking a full line of its own - display:block on the chip does nothing
+   inside a flex container. */
 @media (max-width: 620px) {
-  .chip { display: block; width: max-content; margin: 0 0 0.6rem; }
+  .eyebrow { flex-wrap: wrap; }
+  .eyebrow__txt { flex: 1 0 100%; }
 }
 
 .facts { list-style: none; display: grid; gap: 0.55rem; }

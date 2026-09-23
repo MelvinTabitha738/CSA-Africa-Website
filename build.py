@@ -1161,11 +1161,11 @@ def inuka():
     facts = "".join('<li>%s</li>' % esc(t) for t in I["facts"])
 
     body = """
-<section class="phero" style="min-height:clamp(460px,72vh,720px)">
+<section class="phero phero--photo" style="min-height:clamp(460px,72vh,720px)">
   <div class="phero__media">{hero}</div>
   <div class="phero__scrim"></div>
   <div class="shell--wide">
-    <p class="eyebrow"><span class="chip">{status}</span> {partners}</p>
+    <p class="eyebrow"><span class="chip">{status}</span><span class="eyebrow__txt">{partners}</span></p>
     <h1 class="display" style="font-size:clamp(2.6rem,6.4vw,5.4rem)">INUKA Mombasa</h1>
     <p class="phero__sub serif-em" style="font-size:clamp(1.15rem,2vw,1.6rem);color:#fff">{tagline}</p>
     <div class="phero__meta">
@@ -1262,7 +1262,7 @@ def inuka():
 
 {cta}
 """.format(
-        hero=img("story/inuka-hero", "INUKA Mombasa participants together", eager=True, sizes="100vw"),
+        hero=img("story/inuka-hero", "INUKA Mombasa participants gathered outside Swahilipot Hub, Mombasa", eager=True, sizes="100vw"),
         status=I["status"], partners=esc(I["partners"]), tagline=esc(I["tagline"]),
         dates=I["dates"], venue=esc(I["venue"]), stats=stats,
         why=why, beyond=beyond, took=took, facts=facts, note=esc(I["took_away_note"]),
