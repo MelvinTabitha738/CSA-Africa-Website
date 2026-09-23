@@ -462,9 +462,11 @@ INUKA_2026 = {
     "held": "10 &#8211; 13 September 2026",
 }
 
-# (name, role, bio, session)
-# session: "mc" | "featured" | "panel-1" | "panel-2" | None
-# None means they led a session on days 3-4 that is not yet documented here.
+# (name, role, bio, session, url)
+# session: "organiser" | "mc" | "featured" | "panel-1" | "panel-2" | None
+#   organiser - the two whose idea INUKA was, one from each partner body
+#   None      - led a session on days 3-4 that is not yet documented here
+# url is a personal site, or None.
 INUKA_PEOPLE = [
     ("Maham Hussein",
      "Communications and Public Affairs Professional",
@@ -476,7 +478,7 @@ INUKA_PEOPLE = [
      "in shaping the continent’s future, and how meaningful conversations can become meaningful "
      "action. When she is not behind the communications strategy, Maham enjoys bringing people, "
      "ideas and energy together (both on and off the stage).",
-     "mc"),
+     "mc", None),
 
     ("Dr Sofiat Olaosebikan",
      "Founder, CSA Africa &#183; Computing Science Lecturer, University of Glasgow",
@@ -491,7 +493,7 @@ INUKA_PEOPLE = [
      "possibilities available to them. She is also an Elevate Africa Fellow and is passionate "
      "about technology, education, mentorship and creating practical opportunities for Africa’s "
      "next generation.",
-     "featured"),
+     "organiser", LINKS["sofiat_site"]),
 
     ("Dr Swalhah Yusuf, OGW",
      "Deputy Director, Election Operations, Mombasa County &#183; Electoral Management Professional",
@@ -507,7 +509,7 @@ INUKA_PEOPLE = [
      "excellence, institutional integrity, effective service delivery and credible electoral "
      "processes. Her contribution to public service has been recognised through the Order of the "
      "Grand Warrior (OGW) award.",
-     "featured"),
+     "featured", None),
 
     ("Melvine Tabitha Opondo",
      "Computer Science Student &#183; Technologist &#183; CSA Africa Alumna",
@@ -522,7 +524,7 @@ INUKA_PEOPLE = [
      "create practical solutions. Her story reflects a belief that lack of exposure is not lack "
      "of ability, and that young people can begin building meaningful opportunities with what "
      "they already have.",
-     "panel-1"),
+     "panel-1", None),
 
     ("Aseef Akram",
      "Employer Engagement Associate, Global Opportunity Youth Network &#183; Youth &amp; Sports "
@@ -537,7 +539,7 @@ INUKA_PEOPLE = [
      "development and pathways in sport. His work is driven by a commitment to helping young "
      "people access meaningful opportunities, develop their potential and build sustainable "
      "pathways for growth.",
-     "panel-1"),
+     "panel-1", None),
 
     ("Fatuma Ali",
      "Founder &amp; CEO, Sulha Afrika &#183; Social Entrepreneur &amp; Engineer",
@@ -557,7 +559,7 @@ INUKA_PEOPLE = [
      "material innovation, transforming Indigenous knowledge into scalable climate technologies "
      "that restore biodiversity, strengthen local economies and redefine sustainable "
      "manufacturing.",
-     "panel-1"),
+     "panel-1", None),
 
     ("Haytam Isse Abdullahi",
      "Founder &amp; Executive Director, Future Pillars Organization &#183; Founder, Guiding the "
@@ -570,7 +572,7 @@ INUKA_PEOPLE = [
      "His work spans youth mentorship, education, community initiatives and leadership "
      "development, creating platforms that enable young people to lead and contribute "
      "meaningfully to society.",
-     "panel-1"),
+     "panel-1", None),
 
     ("Kauthar Mohamed",
      "Student Leadership Development Manager &#183; Leadership Architect &amp; Sustainable "
@@ -591,7 +593,7 @@ INUKA_PEOPLE = [
      "community and beyond. Her personal philosophy, &#8220;Inspire to Empower,&#8221; reflects "
      "her belief that when people are given the confidence, tools and opportunities to see what "
      "is possible, they can begin to build it.",
-     "panel-2"),
+     "panel-2", None),
 
     ("Edwin Njuga",
      "Development Professional &#183; Youth Empowerment &amp; Enterprise Development Specialist",
@@ -608,7 +610,7 @@ INUKA_PEOPLE = [
      "Community Development), a Bachelor’s Degree in Sociology, and a Diploma in Project Planning "
      "and Management. He is passionate about youth empowerment, entrepreneurship development, and "
      "creating sustainable opportunities for young people.",
-     "panel-2"),
+     "panel-2", None),
 
     ("Abdulkadir Aweis (Dadir)",
      "Founder, Siewa Media Agency &amp; Siewa Network &#183; Creative Entrepreneur",
@@ -624,7 +626,7 @@ INUKA_PEOPLE = [
      "amplify humanitarian campaigns, empower communities and mobilise people and resources "
      "around shared objectives. He is driven by a belief in the power of people, ideas and "
      "meaningful connections to open doors and create new possibilities.",
-     "panel-2"),
+     "panel-2", None),
 
     # Led sessions on days 3-4. Session details not yet supplied, so they carry
     # no session key and render under the general speaker roster.
@@ -649,7 +651,7 @@ INUKA_PEOPLE = [
      "her work, she equips participants to challenge limiting beliefs, recognise their agency, "
      "communicate their value and take courageous action toward building meaningful futures and "
      "transforming their communities.",
-     None),
+     "organiser", None),
 
     ("Dr Hafidha Ahmed",
      "Mental Health Specialist &amp; Community Developer",
@@ -662,7 +664,7 @@ INUKA_PEOPLE = [
      "empowerment. Through CSR and community-centred initiatives, including work around GBV, "
      "SRHR and HIV/AIDS, Hafidha works to make mental health tools, wellness conversations and "
      "personal development resources more accessible to everyday communities.",
-     None),
+     None, None),
 
     ("Hon. Patrick Mbelle",
      "MCA, Bamburi Ward &#183; Founder &amp; Patron, The Mbelle Initiative",
@@ -672,7 +674,7 @@ INUKA_PEOPLE = [
      "Center, Mjini Shamba Community Enterprise, and Mentors of the Seas Centre. Through these "
      "initiatives, he supports young people and communities through practical skills development, "
      "enterprise, mentorship and locally driven opportunities for growth.",
-     None),
+     None, None),
 
     ("Gheida Abdala Omar",
      "Founder, Girls I Save Africa (GiSave) &#183; STEM Education Advocate &amp; Innovator",
@@ -688,7 +690,7 @@ INUKA_PEOPLE = [
      "Ki-moon Foundation Scholar, Mastercard Foundation Alumni Committee Lead, and IFRC Global "
      "Innovation Lead. Her work is driven by a commitment to helping young people use technology, "
      "creativity and innovation to solve real community challenges and create meaningful impact.",
-     None),
+     None, None),
 
     ("Fiona Nuwamanya",
      "Finance &amp; Management Professional &#183; Entrepreneur &#183; Co-Founder, Africa Centre "
@@ -701,7 +703,7 @@ INUKA_PEOPLE = [
      "Year. She is now co-founder of the Africa Centre for Applied Digital Health (CADH), where "
      "she is helping drive AI-powered digital health solutions and research across the continent. "
      "Her mission is to help young founders build strong, sustainable businesses that last.",
-     None),
+     None, None),
 
     ("Kanga Rasi",
      "Director of Campaigns &amp; Advocacy, Brave Movement &#183; Advocate of the High Court of Kenya",
@@ -717,7 +719,7 @@ INUKA_PEOPLE = [
      "with provincial government officials in Kenya to help translate global commitments into "
      "practical priorities and budget lines. Her belief is simple and unwavering: those closest "
      "to the pain should be closest to the power. She is an Advocate of the High Court of Kenya.",
-     None),
+     None, None),
 
     ("Jackline Waweru Wanjiru",
      "Founder &amp; Team Lead, Leadership4Impact &#183; Youth Advocate",
@@ -731,7 +733,7 @@ INUKA_PEOPLE = [
      "anti-GBV policy development. Jackline is a YALI Cohort 11 alumna and was among the Top 12 "
      "finalists in Kenya’s Ms President political leadership reality show. Her work is driven by "
      "a commitment to creating spaces where young people can lead, thrive and shape the future.",
-     None),
+     None, None),
 
     ("Nancy Moraa Okemwa",
      "Communications Lead, Swahilipot Hub Foundation &#183; Strategic Communicator &amp; Storyteller",
@@ -744,7 +746,7 @@ INUKA_PEOPLE = [
      "Through her work, she supports young creatives to find their voice, understand their "
      "audiences, build meaningful brands and transform creative ideas into sustainable "
      "opportunities.",
-     None),
+     None, None),
 ]
 
 # The two documented panels. "themes" distils the moderator's question set for

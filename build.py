@@ -1097,12 +1097,14 @@ def inuka_panels():
 
 
 def inuka_people(sessions):
-    """Full bio cards. Used only for the two featured speakers."""
+    """Full bio cards, for the organisers and the featured speaker."""
     return "".join(
         '<article class="speaker" data-reveal><div><h3 class="speaker__name">{n}</h3>'
-        '<p class="speaker__role">{r}</p></div><div><p>{b}</p></div></article>'.format(
-            n=esc(n), r=r, b=b)
-        for n, r, b, sess in D.INUKA_PEOPLE if sess in sessions)
+        '<p class="speaker__role">{r}</p>{link}</div><div><p>{b}</p></div></article>'.format(
+            n=esc(n), r=r, b=b,
+            link=('<p style="margin-top:1rem"><a class="tlink" href="%s" target="_blank" '
+                  'rel="noopener">Visit website %s</a></p>' % (u, ARW)) if u else "")
+        for n, r, b, sess, u in D.INUKA_PEOPLE if sess in sessions)
 
 
 def inuka_roster(sessions):
@@ -1118,13 +1120,14 @@ def inuka_roster(sessions):
         '<h3 class="person__name">{n}</h3><p class="person__role">{r}</p>'
         '<details class="person__more"><summary>Biography</summary><p>{b}</p></details>'
         '</article>'.format(n=esc(n), r=r, b=b)
-        for n, r, b, sess in D.INUKA_PEOPLE if sess in sessions)
+        for n, r, b, sess, _u in D.INUKA_PEOPLE if sess in sessions)
 
 
 def inuka():
     I = D.INUKA
     why = "".join('<p>%s</p>' % esc(p) for p in I["why"])
     beyond = "".join('<p>%s</p>' % esc(p) for p in I["beyond"])
+    organisers = inuka_people(("organiser",))
     featured = inuka_people(("featured",))
     roster = inuka_roster(("mc", "panel-1", "panel-2", None))
     panels = inuka_panels()
@@ -1194,6 +1197,17 @@ def inuka():
   <div class="shell--wide">
     <div class="sec-head sec-head--split">
       <div data-reveal>
+        <p class="eyebrow">Whose idea this was</p>
+        <h2 class="h2" style="max-width:18ch">The two behind INUKA</h2>
+      </div>
+      <p class="lead" data-reveal>One from each side of the partnership &#8212; CSA Africa and
+        the NAA&#8217;M Initiative &#8212; and both of them proof of the thing the event
+        set out to argue.</p>
+    </div>
+    {organisers}
+
+    <div class="sec-head sec-head--split" style="margin-top:clamp(3.5rem,7vw,6rem)">
+      <div data-reveal>
         <p class="eyebrow">Who they heard from</p>
         <h2 class="h2">People who have walked it</h2>
       </div>
@@ -1236,7 +1250,8 @@ def inuka():
         status=I["status"], partners=esc(I["partners"]), tagline=esc(I["tagline"]),
         dates=I["dates"], venue=esc(I["venue"]), stats=stats,
         why=why, beyond=beyond, took=took, facts=facts, note=esc(I["took_away_note"]),
-        featured=featured, roster=roster, panels=panels, also=esc(I["also"]),
+        organisers=organisers, featured=featured, roster=roster,
+        panels=panels, also=esc(I["also"]),
         img1=img("story/peer-learning", "INUKA Mombasa participants working side by side"),
         img2=img("story/cohort", "Participants together at the close of INUKA Mombasa"),
         cta=cta_band())
