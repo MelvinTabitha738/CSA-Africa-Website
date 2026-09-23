@@ -13,7 +13,9 @@ FOOTER_ABOUT = ("CSA Africa is based at the School of Computing Science, Univers
                 "Glasgow, but our work spans the African continent.")
 
 LINKS = {
-    "volunteer": "https://forms.office.com/pages/responsepage.aspx?id=KVxybjp2UE-B8i4lTwEzyNYh8sd1qzlKhtxB8q6RSWpUQTZDT05MRVFEWDI0SjYwQURa",
+    # Must match csaafrica.org exactly. The id is long and was previously
+# truncated here, which took applicants to a Microsoft Forms error page.
+    "volunteer": "https://forms.office.com/pages/responsepage.aspx?id=KVxybjp2UE-B8i4lTwEzyNYh8sd1qzlKhtxB8q6RSWpUQTZDT05MRVFEWDI0SjYwQURaWVFXRFpDVi4u&route=shorturl",
     "donate": "https://givingtoglasgow.hubbub.net/p/csaafrica/",
     "inuka_apply": "https://docs.google.com/forms/d/e/1FAIpQLScXetmtBR-SeBiHEMyhOAmfimMNN2wO9En8iLJgvNHRMQ36Qw/viewform?usp=dialog",
     "swahilipot": "https://www.swahilipothub.co.ke/",
