@@ -65,6 +65,13 @@ EDITION_NAV = [(e["year"], e["slug"], e["place"]) for e in D.EDITIONS if e["slug
 
 
 # ------------------------------------------------------------------ chrome
+def filesize(rel):
+    """Human-readable size of a file in the repo, measured at build time so the
+    label can never drift from the file it describes."""
+    n = os.path.getsize(os.path.join(ROOT, rel))
+    return "%.1f MB" % (n / 1048576.0) if n >= 1048576 else "%d KB" % round(n / 1024.0)
+
+
 def rail_controls(what, cls=""):
     """Prev/next arrows for a [data-rail]. Must live inside the rail's
     [data-rail-wrap] or main.js will not find them."""
@@ -1025,16 +1032,29 @@ def team():
 # ------------------------------------------------------------------ news
 def news():
     items = []
-    for i, (title, im, excerpt, url) in enumerate(D.NEWS):
+    for i, (title, im, excerpt, url, doc) in enumerate(D.NEWS):
+        # Where we hold our own copy of the document, that is what the item
+        # opens - it keeps working if the original host goes away. The source
+        # URL stays available underneath, credited by name.
+        href = ("assets/" + doc) if doc else url
+        kind = "PDF" if doc else "Press"
+        acts = ('<a class="tlink" href="{h}" target="_blank" rel="noopener">Read the article {arw}</a>'
+                .format(h=href, arw=ARW))
+        if doc:
+            acts += ('<a class="tlink tlink--quiet" href="assets/{d}" download>Download PDF '
+                     '<span class="mono">({sz})</span></a>'.format(d=doc, sz=filesize("assets/" + doc)))
+            acts += ('<a class="tlink tlink--quiet" href="{u}" target="_blank" rel="noopener">'
+                     'Original source {arw}</a>'.format(u=url, arw=ARW))
         items.append(
             '<article class="news-item{flip}" data-reveal>'
-            '<div><span class="src">{n:02d} &#183; Press</span></div>'
+            '<div><span class="src">{n:02d} &#183; {k}</span></div>'
             '<div><h3>{t}</h3><p>{e}</p>'
-            '<a class="tlink" href="{u}" target="_blank" rel="noopener">Read more {arw}</a></div>'
-            '<a class="news-item__img" href="{u}" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true">{img}</a>'
+            '<div class="news-item__acts">{acts}</div></div>'
+            '<a class="news-item__img" href="{h}" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true">{img}</a>'
             '</article>'.format(
                 flip=" news-item--flip" if i % 2 else "", n=i + 1, t=esc(title), e=esc(excerpt),
-                u=url, img=img(im, title, sizes="(min-width: 820px) 360px, 100vw"), arw=ARW))
+                k=kind, h=href, acts=acts,
+                img=img(im, title, sizes="(min-width: 820px) 360px, 100vw")))
 
     body = """
 <section class="phero">

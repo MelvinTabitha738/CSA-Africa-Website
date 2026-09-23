@@ -1540,7 +1540,13 @@ body.nav-open { overflow: hidden; }
 .news-item h3 { font-family: var(--serif); font-size: clamp(1.3rem, 2.1vw, 1.85rem); font-weight: 400; letter-spacing: -0.022em; }
 .news-item p { margin-top: 0.7rem; color: var(--ink-2); font-size: 0.9688rem; }
 .news-item .src { font-family: var(--mono); font-size: 0.6875rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--amber-deep); }
-.news-item .tlink { margin-top: 1rem; }
+/* One action for a web article, three for a hosted PDF - so they wrap as a
+   row rather than each claiming its own top margin. */
+.news-item__acts { display: flex; flex-wrap: wrap; gap: 0.5rem 1.4rem; margin-top: 1rem; }
+.news-item__acts .tlink { margin-top: 0; white-space: nowrap; }
+.tlink--quiet { font-weight: 500; font-size: 0.875rem; color: var(--ink-2); }
+.tlink--quiet:hover { color: var(--navy); }
+.tlink--quiet .mono { font-family: var(--mono); font-size: 0.75rem; opacity: 0.75; }
 
 /* ---------------------------------------------------------------- 19. forms */
 .form { display: grid; gap: 1.1rem; }

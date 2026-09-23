@@ -343,35 +343,43 @@ PARTNERS = [
 ]
 
 # ---------------------------------------------------------------- news
+# (title, image, excerpt, source url, local copy | None)
+# The four newspaper pieces are PDFs. We serve our own copies from
+# assets/docs/ so they keep working if the original host goes away - three of
+# them sit on the old Wix CDN.
 NEWS = [
     ("University of Glasgow News", "news/glasgow-news",
      "This article highlights Dr Sofiat Olaosebikan and her initiative (CSA Africa) at the University "
      "of Glasgow, using maths and computing skills to train young scientists across Africa.",
-     "https://www.gla.ac.uk/news/archiveofnews/2019/september/headline_673552_en.html"),
+     "https://www.gla.ac.uk/news/archiveofnews/2019/september/headline_673552_en.html", None),
     ("London Mathematical Society Newsletter", "news/lms-newsletter",
      "In this LMS Newsletter (page 31-32), Dr Benjamin Bumpus provides insight on his experience of "
      "teaching programming at the first CSA Africa 2018 workshop.",
-     "https://www.lms.ac.uk/sites/lms.ac.uk/files/files/NLMS_481_for%20web.pdf"),
+     "https://www.lms.ac.uk/sites/lms.ac.uk/files/files/NLMS_481_for%20web.pdf",
+     "docs/lms-newsletter-481.pdf"),
     ("TechCabal", "news/techcabal",
      "This article features a CSA Africa participant, Motunrayo Sanyaolu, and how she is using "
      "knowledge gained from our Python workshop to innovate and create impact.",
-     "https://techcabal.com/2025/03/12/unilag-motunrayo-sanyaolu-engineering/"),
+     "https://techcabal.com/2025/03/12/unilag-motunrayo-sanyaolu-engineering/", None),
     ("Metro Newspaper", "news/metro",
      "This article profiles Dr Sofiat’s initiatives to introduce thousands of African youths to "
      "Python programming, sparking interest in tech careers and expanding opportunities in STEM.",
-     "https://bb716663-aee6-4233-bcad-e44861f5367c.filesusr.com/ugd/303cbb_4cbc45be841c44a8b78db94bf15b3211.pdf"),
+     "https://bb716663-aee6-4233-bcad-e44861f5367c.filesusr.com/ugd/303cbb_4cbc45be841c44a8b78db94bf15b3211.pdf",
+     "docs/metro-newspaper.pdf"),
     ("QS Top Universities", "news/qs-top-universities",
      "An in-depth Q&A that covers Dr Olaosebikan’s journey from Nigeria to Glasgow and her "
      "mission with CSA Africa.",
-     "https://www.topuniversities.com/student-info/student-stories/qa-future-world-changer-sofiat-olaosebikan"),
+     "https://www.topuniversities.com/student-info/student-stories/qa-future-world-changer-sofiat-olaosebikan", None),
     ("The Herald Newspaper", "news/herald",
      "A feature highlighting Dr Sofiat Olaosebikan’s mission to empower young Africans through "
      "computing education.",
-     "https://bb716663-aee6-4233-bcad-e44861f5367c.filesusr.com/ugd/303cbb_298c03f80a924a3b8117b1a5e4905ffd.pdf"),
+     "https://bb716663-aee6-4233-bcad-e44861f5367c.filesusr.com/ugd/303cbb_298c03f80a924a3b8117b1a5e4905ffd.pdf",
+     "docs/the-herald.pdf"),
     ("The National Newspaper", "news/the-national",
      "A coverage of Dr Sofiat’s early work training young African scientists, demonstrating how her "
      "academic journey in Scotland fuels impactful grassroots education across the continent.",
-     "https://bb716663-aee6-4233-bcad-e44861f5367c.filesusr.com/ugd/303cbb_2c228512d895428faee0b76ddfe37ec1.pdf"),
+     "https://bb716663-aee6-4233-bcad-e44861f5367c.filesusr.com/ugd/303cbb_2c228512d895428faee0b76ddfe37ec1.pdf",
+     "docs/the-national.pdf"),
 ]
 
 # ---------------------------------------------------------------- alumni films
