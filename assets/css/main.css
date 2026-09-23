@@ -1830,16 +1830,23 @@ body.nav-open { overflow: hidden; }
    full bios stacked is a wall of text on a page whose job is to say what
    happened. Auto-fit so it is 1 column on a phone and 3 on a desktop without
    naming a single breakpoint. */
-.people-grid {
-  display: grid;
-  gap: clamp(0.75rem, 2vw, 1.25rem);
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 17rem), 1fr));
-}
+/* The roster is a rail, not a grid. Seventeen cards laid out four across ran
+   five rows deep and swamped the page; the site already answers this for the
+   14 testimonials and 22 volunteers, and the answer is a scroller with a
+   count, arrows and a scrollbar drawn to be seen. Everyone stays reachable -
+   nothing is hidden behind a "show more". */
+.rail--roster { grid-auto-columns: min(78vw, 270px); }
+@media (min-width: 900px)  { .rail--roster { grid-auto-columns: 260px; } }
+@media (max-width: 480px)  { .rail--roster { grid-auto-columns: min(84vw, 250px); } }
 .person {
   border: 1px solid var(--line);
   background: var(--white);
   padding: clamp(1.1rem, 2.2vw, 1.5rem);
+  scroll-snap-align: start;
+  display: flex;
+  flex-direction: column;
 }
+/* the disclosure sits on the card's floor - see the margin-top below */
 .person__name {
   font-family: var(--serif);
   font-size: 1.15rem;
@@ -1854,7 +1861,10 @@ body.nav-open { overflow: hidden; }
   color: var(--amber-deep);
   font-weight: 600;
 }
-.person__more { margin-top: 0.9rem; }
+/* auto, not a fixed gap: in a rail every card is the same height, so this
+   drops each disclosure to the floor and they line up across the row.
+   padding-top keeps it off the role text on a short card. */
+.person__more { margin-top: auto; padding-top: 0.9rem; }
 .person__more summary {
   cursor: pointer;
   display: inline-flex;

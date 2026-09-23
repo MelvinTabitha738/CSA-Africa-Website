@@ -1231,7 +1231,12 @@ def inuka():
     {organisers}
     <p class="lead" data-reveal style="margin-top:2.5rem;max-width:70ch">{also}</p>
 
-    <div class="sec-head sec-head--split" style="margin-top:clamp(3.5rem,7vw,6rem)">
+  </div>
+</section>
+
+<section class="section band-stone section--tight" data-rail-wrap>
+  <div class="shell--wide">
+    <div class="sec-head sec-head--split">
       <div data-reveal>
         <p class="eyebrow">The full roster</p>
         <h2 class="h2" style="max-width:20ch">Everyone who led a session</h2>
@@ -1239,7 +1244,12 @@ def inuka():
       <p class="lead" data-reveal>{roster_n} more speakers, panellists and facilitators across
         the four days. Open any name to read their biography.</p>
     </div>
-    <div class="people-grid" data-reveal-group>{roster}</div>
+    <div class="rail-head" data-reveal>
+      <p class="num">{roster_n} people<span class="rail-hint"> &#183; swipe or use the arrows</span></p>
+      {rcontrols}
+    </div>
+    <div class="rail rail--roster" data-rail data-reveal-group tabindex="0" role="group"
+         aria-label="INUKA Mombasa speakers and facilitators, scrollable">{roster}</div>
   </div>
 </section>
 
@@ -1267,9 +1277,10 @@ def inuka():
         dates=I["dates"], venue=esc(I["venue"]), stats=stats,
         why=why, beyond=beyond, took=took, facts=facts, note=esc(I["took_away_note"]),
         organisers=organisers, roster=roster, roster_n=roster_n,
+        rcontrols=rail_controls("speakers"),
         panels=panels, also=esc(I["also"]),
-        img1=img("story/peer-learning", "INUKA Mombasa participants working side by side"),
-        img2=img("story/cohort", "Participants together at the close of INUKA Mombasa"),
+        img1=img("story/inuka-speaking-up", "An INUKA Mombasa participant speaking into a microphone among her peers"),
+        img2=img("story/inuka-connections", "INUKA Mombasa participants talking and laughing together"),
         cta=cta_band())
 
     return page("inuka-mombasa.html", "INUKA Mombasa 2026 — Believe. See. Build. Rise.",
